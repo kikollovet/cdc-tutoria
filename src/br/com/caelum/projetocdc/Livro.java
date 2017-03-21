@@ -1,5 +1,10 @@
 package br.com.caelum.projetocdc;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Livro {
 
 	String titulo;
@@ -7,7 +12,8 @@ public class Livro {
 	Autor autor;
 	double precoImpresso;
 	double precoEbook;
-	Categoria categoria;
+	Calendar dataUltimaAtualizacao;
+	Calendar dataLancamento;
 
 	public Livro(String titulo, String subTitulo, Autor autor, double precoImpresso, double precoEbook) {
 		this.titulo = titulo;
@@ -17,14 +23,31 @@ public class Livro {
 		this.precoEbook = precoEbook;
 	}
 	
-	public Livro(String titulo, String subTitulo, Autor autor, double precoImpresso, double precoEbook, Categoria categoria){
+	public Livro(String titulo, String subTitulo, Autor autor, double precoImpresso, double precoEbook, String dataUltimaAtualizacao, String dataLancamento) {
 		this.titulo = titulo;
 		this.subTitulo = subTitulo;
 		this.autor = autor;
 		this.precoImpresso = precoImpresso;
 		this.precoEbook = precoEbook;
-		this.categoria = categoria;
+		
+		try{
+			Date dUA = new SimpleDateFormat("dd/MM/yyyy").parse(dataUltimaAtualizacao);
+			this.dataUltimaAtualizacao = Calendar.getInstance();
+			this.dataUltimaAtualizacao.setTime(dUA);
+		} catch (ParseException e) {
+			System.out.println("Erro de conversão da data");
+		}
+		
+		try{
+			Date dL = new SimpleDateFormat("dd/MM/yyyy").parse(dataLancamento);
+			this.dataLancamento = Calendar.getInstance();
+			this.dataLancamento.setTime(dL);
+		} catch (ParseException e) {
+			System.out.println("Erro de conversão da data");
+		}
 	}
+	
+	
 
 	public String getTitulo() {
 		return titulo;
@@ -46,9 +69,26 @@ public class Livro {
 		return precoEbook;
 	}
 	
-	public Categoria getCategoria() {
-		return categoria;
+	public Calendar getDataUltimaAtualizacao() {
+		return dataUltimaAtualizacao;
 	}
+	
+	public Calendar getDataLancamento() {
+		return dataLancamento;
+	}
+	
+	public String getDataUltimaAtualizacaoString(){
+		Date data = this.dataUltimaAtualizacao.getTime();
+		SimpleDateFormat simples = new SimpleDateFormat("dd/MM/yyyy");
+		return simples.format(data);
+	}
+	
+	public String getDataLancamentoString(){
+		Date data = this.dataLancamento.getTime();
+		SimpleDateFormat simples = new SimpleDateFormat("dd/MM/yyyy");
+		return simples.format(data);
+	}
+	
 
 	@Override
 	public int hashCode() {
