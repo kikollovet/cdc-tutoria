@@ -39,9 +39,12 @@ public class TestaUltimosLancamentos {
 		site.inclui(l6);
 		
 		//site.imprimeTodosOsLivros();
+		System.out.println("Ultimos Lançamentos\n==========");
 		site.imprimeUltimosLancamentos();
-		//site.imprimeUltimasAtualizacoes();
-		//site.imprimeDestaques();
+		System.out.println("==========\nUltimos Atualizados\n===========");
+		site.imprimeUltimasAtualizacoes();
+		System.out.println("==========\nDestaques\n=============");
+		site.imprimeDestaques();
 		
 	}
 
