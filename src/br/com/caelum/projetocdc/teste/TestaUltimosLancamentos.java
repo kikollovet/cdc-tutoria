@@ -40,11 +40,14 @@ public class TestaUltimosLancamentos {
 		
 		//site.imprimeTodosOsLivros();
 		System.out.println("Ultimos Lançamentos\n==========");
-		site.imprimeUltimosLancamentos();
+		site.imprimeUltimosLancamentos().forEach(livro -> {
+			System.out.println(livro);
+		});;
 		System.out.println("==========\nUltimos Atualizados\n===========");
 		site.imprimeUltimasAtualizacoes();
 		System.out.println("==========\nDestaques\n=============");
 		site.imprimeDestaques();
+		
 		
 	}
 

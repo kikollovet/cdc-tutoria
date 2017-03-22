@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Site {
 
@@ -25,27 +26,15 @@ public class Site {
 		});
 	}
 
-	public void imprimeUltimosLancamentos() {
-		List<Livro> livrosLista = new ArrayList<>(this.livros);
-		Collections.sort(livrosLista, new ComparadorUltimoLancamento());
-		for(int i=0; i < 5; i++){
-			System.out.println(livrosLista.get(i).getTitulo() + " " + livrosLista.get(i).getDataLancamentoString());
-		}
+	public List<Livro> imprimeUltimosLancamentos() {
+		return this.livros.stream().sorted(new ComparadorUltimoLancamento()).limit(5).collect(Collectors.toList());
 	}
-	
-	public void imprimeUltimasAtualizacoes() {
-		List<Livro> livrosLista = new ArrayList<>(this.livros);
-		Collections.sort(livrosLista, new ComparadorUltimaAtualizacao());
-		for(int i=0; i < 5; i++){
-			System.out.println(livrosLista.get(i).getTitulo() + " " + livrosLista.get(i).getDataUltimaAtualizacaoString());
-		}
+
+	public List<Livro> imprimeUltimasAtualizacoes() {
+		return this.livros.stream().sorted(new ComparadorUltimaAtualizacao()).limit(5).collect(Collectors.toList());
 	}
-	
-	public void imprimeDestaques() {
-		List<Livro> livrosLista = new ArrayList<>(this.livros);
-		Collections.sort(livrosLista, new ComparadorUltimoLancamento());
-		for(int i=0; i < 3; i++){
-			System.out.println(livrosLista.get(i).getTitulo() + " " + livrosLista.get(i).getDataLancamentoString());
-		}
+
+	public List<Livro> imprimeDestaques() {
+		return this.livros.stream().sorted(new ComparadorUltimoLancamento()).limit(3).collect(Collectors.toList());
 	}
 }
