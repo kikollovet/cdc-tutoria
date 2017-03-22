@@ -26,15 +26,15 @@ public class Site {
 		});
 	}
 
-	public List<Livro> imprimeUltimosLancamentos() {
+	public List<Livro> listaUltimosLancamentos() {
 		return this.livros.stream().sorted(new ComparadorUltimoLancamento()).limit(5).collect(Collectors.toList());
 	}
 
-	public List<Livro> imprimeUltimasAtualizacoes() {
+	public List<Livro> listaUltimasAtualizacoes() {
 		return this.livros.stream().sorted(new ComparadorUltimaAtualizacao()).limit(5).collect(Collectors.toList());
 	}
 
-	public List<Livro> imprimeDestaques() {
+	public List<Livro> listaDestaques() {
 		return this.livros.stream().sorted(new ComparadorUltimoLancamento()).limit(3).collect(Collectors.toList());
 	}
 }

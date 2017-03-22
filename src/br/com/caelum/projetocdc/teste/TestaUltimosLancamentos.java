@@ -40,15 +40,15 @@ public class TestaUltimosLancamentos {
 		
 		//site.imprimeTodosOsLivros();
 		System.out.println("Ultimos Lançamentos\n==========");
-		site.imprimeUltimosLancamentos().forEach(livro -> {
+		site.listaUltimosLancamentos().forEach(livro -> {
 			System.out.println(livro.livroTituloDataLancamento());
 		});;
 		System.out.println("==========\nUltimos Atualizados\n===========");
-		site.imprimeUltimasAtualizacoes().forEach(livro -> {
+		site.listaUltimasAtualizacoes().forEach(livro -> {
 			System.out.println(livro.livroTituloDataUltimaAtualizacao());
 		});
 		System.out.println("==========\nDestaques\n=============");
-		site.imprimeDestaques().forEach(livro -> {
+		site.listaDestaques().forEach(livro -> {
 			System.out.println(livro.livroDestaqueTituloDataLancamento());
 		});
 		
