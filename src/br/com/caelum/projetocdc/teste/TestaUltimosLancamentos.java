@@ -39,9 +39,9 @@ public class TestaUltimosLancamentos {
 		site.inclui(l6);
 		
 		//site.imprimeTodosOsLivros();
-		//site.imprimeUltimosLancamentos();
+		site.imprimeUltimosLancamentos();
 		//site.imprimeUltimasAtualizacoes();
-		site.imprimeDestaques();
+		//site.imprimeDestaques();
 		
 	}
 

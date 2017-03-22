@@ -29,7 +29,7 @@ public class Site {
 		List<Livro> livrosLista = new ArrayList<>(this.livros);
 		Collections.sort(livrosLista, new ComparadorUltimoLancamento());
 		for(int i=0; i < 5; i++){
-			System.out.println(livrosLista.get(i).getDataLancamentoString());
+			System.out.println(livrosLista.get(i).getTitulo() + " " + livrosLista.get(i).getDataLancamentoString());
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class Site {
 		List<Livro> livrosLista = new ArrayList<>(this.livros);
 		Collections.sort(livrosLista, new ComparadorUltimaAtualizacao());
 		for(int i=0; i < 5; i++){
-			System.out.println(livrosLista.get(i).getDataUltimaAtualizacaoString());
+			System.out.println(livrosLista.get(i).getTitulo() + " " + livrosLista.get(i).getDataUltimaAtualizacaoString());
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class Site {
 		List<Livro> livrosLista = new ArrayList<>(this.livros);
 		Collections.sort(livrosLista, new ComparadorUltimoLancamento());
 		for(int i=0; i < 3; i++){
-			System.out.println(livrosLista.get(i).getDataLancamentoString());
+			System.out.println(livrosLista.get(i).getTitulo() + " " + livrosLista.get(i).getDataLancamentoString());
 		}
 	}
 }
