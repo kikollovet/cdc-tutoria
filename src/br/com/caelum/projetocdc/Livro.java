@@ -89,6 +89,18 @@ public class Livro {
 		return simples.format(data);
 	}
 	
+	public String livroTituloDataLancamento(){
+		return this.titulo + " " + this.getDataLancamentoString();
+	}
+	
+	public String livroTituloDataUltimaAtualizacao(){
+		return this.titulo + " " + this.getDataUltimaAtualizacaoString();
+	}
+	
+	public String livroDestaqueTituloDataLancamento(){
+		return this.titulo + " " + this.getDataLancamentoString();
+	}
+	
 
 	@Override
 	public int hashCode() {
