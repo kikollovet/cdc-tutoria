@@ -1,6 +1,7 @@
 package br.com.caelum.projetocdc.teste;
 
 import br.com.caelum.projetocdc.Autor;
+import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Livro;
 
 public class TestaCarrinhoCompras {
@@ -29,7 +30,17 @@ public class TestaCarrinhoCompras {
 		Livro l6 = new Livro("Guia da Startup", "Como startups e empresas estabelecidas podem criar produtos de software rentáveis", 
 				joaquim, 69.90, 29.90, "05/10/2017", "01/03/2017");
 
+		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+		
 		//adicione livros no carrinho
+		carrinhoDeCompras.adiciona(l1);
+		carrinhoDeCompras.adiciona(l2);
+		carrinhoDeCompras.adiciona(l1);
+		
+		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
+			System.out.println(livro);
+		});
+		
 		//exiba a quantidade de livros no carrinho
 		//exiba o valor total do carrinho
 		//remover livro do carrinho
