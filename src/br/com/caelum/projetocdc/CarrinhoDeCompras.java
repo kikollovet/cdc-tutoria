@@ -5,37 +5,37 @@ import java.util.List;
 
 public class CarrinhoDeCompras {
 
-	private List<Livro> listaLivroCarrinhoCompra = new ArrayList<>();
+	private List<Livro> listaLivro = new ArrayList<>();
 	
-	public List<Livro> getListaLivroCarrinhoCompra() {
-		return listaLivroCarrinhoCompra;
+	public List<Livro> getListaLivro() {
+		return listaLivro;
 	}
 
 	public void adiciona(Livro livro){
-		this.listaLivroCarrinhoCompra.add(livro);
+		this.listaLivro.add(livro);
 	}
 	
 	public int exibeQuantidadeLivrosCarrinho(){
-		return this.listaLivroCarrinhoCompra.size();
+		return this.listaLivro.size();
 	}
 	
 	public double exibeValorTotalCarrinho(){
 		double valorTotal = 0.0;
-		for (Livro livro : listaLivroCarrinhoCompra) {
+		for (Livro livro : listaLivro) {
 			valorTotal += livro.getPrecoImpresso();
 		}
 		return valorTotal;
 	}
 	
 	public void remove(Livro livro){
-		this.listaLivroCarrinhoCompra.remove(livro);
+		this.listaLivro.remove(livro);
 	}
 	
 	public void atualizarQuantidadeMesmoLivro(Livro livro, int numero){
 		String tituloLivro = livro.getTitulo();
 		int totalMesmoLivro = 0;
 		
-		for (Livro livro2 : listaLivroCarrinhoCompra) {
+		for (Livro livro2 : listaLivro) {
 			if(tituloLivro.equals(livro2.getTitulo())){
 				totalMesmoLivro++;
 			}
@@ -45,7 +45,7 @@ public class CarrinhoDeCompras {
 		
 		if(totalMesmoLivro < numero){
 			for(int i = 0; i < diferenca; i++){
-				this.listaLivroCarrinhoCompra.add(livro);
+				this.listaLivro.add(livro);
 			}
 		}
 	}

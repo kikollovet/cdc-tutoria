@@ -39,7 +39,7 @@ public class TestaCarrinhoCompras {
 		carrinhoDeCompras.adiciona(l2);
 		carrinhoDeCompras.adiciona(l1);
 		
-		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
+		carrinhoDeCompras.getListaLivro().forEach(livro -> {
 			System.out.println(livro);
 		});
 		
@@ -56,7 +56,7 @@ public class TestaCarrinhoCompras {
 		
 		carrinhoDeCompras.remove(l1);
 		
-		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
+		carrinhoDeCompras.getListaLivro().forEach(livro -> {
 			System.out.println(livro);
 		});
 		
@@ -64,7 +64,7 @@ public class TestaCarrinhoCompras {
 		
 		System.out.println("======\n======");
 		carrinhoDeCompras.atualizarQuantidadeMesmoLivro(l1, 4);
-		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
+		carrinhoDeCompras.getListaLivro().forEach(livro -> {
 			System.out.println(livro);
 		});
 		
