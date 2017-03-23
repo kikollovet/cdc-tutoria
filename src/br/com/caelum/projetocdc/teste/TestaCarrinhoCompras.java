@@ -55,13 +55,19 @@ public class TestaCarrinhoCompras {
 		//remover livro do carrinho
 		
 		carrinhoDeCompras.remove(l1);
-		carrinhoDeCompras.remove(l1);
 		
 		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
 			System.out.println(livro);
 		});
 		
 		//atualizar a quantidade de determinado livro no carrinho
+		
+		System.out.println("======\n======");
+		carrinhoDeCompras.atualizarQuantidadeMesmoLivro(l1, 4);
+		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
+			System.out.println(livro);
+		});
+		
 		//posso comprar mais de um do mesmo livro
 		//liste todos os livros do carrinho
 	}

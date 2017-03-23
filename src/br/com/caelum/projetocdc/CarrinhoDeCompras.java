@@ -30,4 +30,23 @@ public class CarrinhoDeCompras {
 	public void remove(Livro livro){
 		this.listaLivroCarrinhoCompra.remove(livro);
 	}
+	
+	public void atualizarQuantidadeMesmoLivro(Livro livro, int numero){
+		String tituloLivro = livro.getTitulo();
+		int totalMesmoLivro = 0;
+		
+		for (Livro livro2 : listaLivroCarrinhoCompra) {
+			if(tituloLivro.equals(livro2.getTitulo())){
+				totalMesmoLivro++;
+			}
+		}
+		
+		int diferenca = Math.abs(numero - totalMesmoLivro);
+		
+		if(totalMesmoLivro < numero){
+			for(int i = 0; i < diferenca; i++){
+				this.listaLivroCarrinhoCompra.add(livro);
+			}
+		}
+	}
 }
