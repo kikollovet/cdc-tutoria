@@ -1,6 +1,7 @@
 package br.com.caelum.projetocdc.teste;
 
 import java.text.DecimalFormat;
+import java.util.Map;
 
 import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.CarrinhoDeCompras;
@@ -17,9 +18,9 @@ public class TestaCarrinhoCompras {
 		Livro l2 = new Livro("Desconstruindo a Web", "As tecnologias por tráz de uma requisição", willian, 69.90,
 				29.90, "09/10/2017", "15/03/2017");
 
-		Autor jMM = new Autor("Jonathan Lamim, Matheus Marabesi, Michael Douglas");
-		Livro l3 = new Livro("Coleção CodeIgniter + Zend PHP", "", jMM, 0.00, 49.90, "08/10/2017", "10/03/2017");
-
+		Autor alexandre = new Autor("Alexandre Lourenço");
+		Livro l3 = new Livro("Elasticsearch", "Consumindo dados real-time com ELK", alexandre, 
+				69.90, 29.90);
 		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
 		
 		//adicione livros no carrinho
@@ -77,11 +78,19 @@ public class TestaCarrinhoCompras {
 		});
 		
 		
-		//Imprime quantidade valor
+		//Imprime quantidade valor Set de String
 		
 		System.out.println("=========\n============\n=====");
 		carrinhoDeCompras.getQuantidadeLivroValor().forEach(dadosLivro -> {
 			System.out.println(dadosLivro);
 		});
+		
+		//Imprime quantidade valor HashMap
+		
+		System.out.println("============\n==========\n========");
+		for (Map.Entry<Livro, Integer> entry : carrinhoDeCompras.getQuantidadeLivroValorMap().entrySet()) {
+			System.out.println(entry.getKey() + "\nQuantidade: " + entry.getValue() + 
+					"\nValor: R$" + (entry.getKey().getPrecoImpresso()) * entry.getValue() + "\n=====");
+		}
 	}
 }
