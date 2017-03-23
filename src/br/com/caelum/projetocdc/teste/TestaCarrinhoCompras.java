@@ -1,5 +1,7 @@
 package br.com.caelum.projetocdc.teste;
 
+import java.text.DecimalFormat;
+
 import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Livro;
@@ -47,8 +49,8 @@ public class TestaCarrinhoCompras {
 		carrinhoDeCompras.exibeQuantidadeLivrosCarrinho());
 		
 		//exiba o valor total do carrinho
-		
-		System.out.println("Preço total: R$" + carrinhoDeCompras.exibeValorTotalCarrinho());
+		DecimalFormat dF = new DecimalFormat("0.00");
+		System.out.println("Preço total: R$" + dF.format(carrinhoDeCompras.exibeValorTotalCarrinho()));
 		
 		//remover livro do carrinho
 		//atualizar a quantidade de determinado livro no carrinho
