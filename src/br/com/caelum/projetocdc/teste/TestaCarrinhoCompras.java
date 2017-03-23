@@ -83,6 +83,10 @@ public class TestaCarrinhoCompras {
 		
 		//liste todos os livros do carrinho
 		
+		System.out.println("=========\n=======\nTodos os livros do carrinho");
+		carrinhoDeCompras.getListaLivro().forEach(livro -> {
+			System.out.println(livro);
+		});
 		
 	}
 }
