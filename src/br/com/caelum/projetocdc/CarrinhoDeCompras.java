@@ -14,4 +14,8 @@ public class CarrinhoDeCompras {
 	public void adiciona(Livro livro){
 		this.listaLivroCarrinhoCompra.add(livro);
 	}
+	
+	public int exibeQuantidadeLivrosCarrinho(){
+		return this.listaLivroCarrinhoCompra.size();
+	}
 }

@@ -42,7 +42,13 @@ public class TestaCarrinhoCompras {
 		});
 		
 		//exiba a quantidade de livros no carrinho
+		
+		System.out.println("Quantidade livros no carrinho " + 
+		carrinhoDeCompras.exibeQuantidadeLivrosCarrinho());
+		
 		//exiba o valor total do carrinho
+		
+		
 		//remover livro do carrinho
 		//atualizar a quantidade de determinado livro no carrinho
 		//posso comprar mais de um do mesmo livro
