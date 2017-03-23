@@ -18,4 +18,12 @@ public class CarrinhoDeCompras {
 	public int exibeQuantidadeLivrosCarrinho(){
 		return this.listaLivroCarrinhoCompra.size();
 	}
+	
+	public double exibeValorTotalCarrinho(){
+		double valorTotal = 0.0;
+		for (Livro livro : listaLivroCarrinhoCompra) {
+			valorTotal += livro.getPrecoImpresso();
+		}
+		return valorTotal;
+	}
 }

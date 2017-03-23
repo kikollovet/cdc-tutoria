@@ -48,6 +48,7 @@ public class TestaCarrinhoCompras {
 		
 		//exiba o valor total do carrinho
 		
+		System.out.println("Preço total: R$" + carrinhoDeCompras.exibeValorTotalCarrinho());
 		
 		//remover livro do carrinho
 		//atualizar a quantidade de determinado livro no carrinho
