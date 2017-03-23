@@ -1,7 +1,9 @@
 package br.com.caelum.projetocdc;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarrinhoDeCompras {
 
@@ -32,11 +34,10 @@ public class CarrinhoDeCompras {
 	}
 	
 	public void atualizarQuantidadeMesmoLivro(Livro livro, int numero){
-		String tituloLivro = livro.getTitulo();
 		int totalMesmoLivro = 0;
 		
 		for (Livro livro2 : listaLivro) {
-			if(tituloLivro.equals(livro2.getTitulo())){
+			if(livro.equals(livro2)){
 				totalMesmoLivro++;
 			}
 		}
@@ -54,6 +55,25 @@ public class CarrinhoDeCompras {
 				this.listaLivro.remove(livro);
 			}
 		}
+	}
+	
+	public Set<String> getQuantidadeLivroValor(){
+		Set<String> listaQuantidadeValor = new HashSet<>();
+		
+		int quantMesmoLivro = 0;
+				
+		for(int i = 0; i < this.listaLivro.size(); i++){
+			Livro livroUm = listaLivro.get(i);
+			for (Livro livro : listaLivro) {
+				if(livro.equals(livroUm)){
+					quantMesmoLivro++;
+				}
+			}
+			listaQuantidadeValor.add(livroUm.getTitulo() + " - quant: " + quantMesmoLivro + 
+					" Preço: R$" + (quantMesmoLivro * livroUm.getPrecoImpresso()));
+			quantMesmoLivro = 0;
+		}
+		return listaQuantidadeValor;
 	}
 	
 	
