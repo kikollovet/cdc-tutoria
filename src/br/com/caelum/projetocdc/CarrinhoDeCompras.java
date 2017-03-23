@@ -48,5 +48,13 @@ public class CarrinhoDeCompras {
 				this.listaLivro.add(livro);
 			}
 		}
+		
+		if(totalMesmoLivro > numero){
+			for(int i = 0; i < diferenca; i++){
+				this.listaLivro.remove(livro);
+			}
+		}
 	}
+	
+	
 }

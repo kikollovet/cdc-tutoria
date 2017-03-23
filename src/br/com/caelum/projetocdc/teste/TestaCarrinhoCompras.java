@@ -61,6 +61,7 @@ public class TestaCarrinhoCompras {
 		});
 		
 		//atualizar a quantidade de determinado livro no carrinho
+		//posso comprar mais de um do mesmo livro
 		
 		System.out.println("======\n======");
 		carrinhoDeCompras.atualizarQuantidadeMesmoLivro(l1, 4);
@@ -68,7 +69,20 @@ public class TestaCarrinhoCompras {
 			System.out.println(livro);
 		});
 		
-		//posso comprar mais de um do mesmo livro
+		System.out.println("=======\n======");
+		carrinhoDeCompras.atualizarQuantidadeMesmoLivro(l1, 2);
+		carrinhoDeCompras.getListaLivro().forEach(livro -> {
+			System.out.println(livro);
+		});
+		
+		System.out.println("========\n=======");
+		carrinhoDeCompras.atualizarQuantidadeMesmoLivro(l3, 2);
+		carrinhoDeCompras.getListaLivro().forEach(livro -> {
+			System.out.println(livro);
+		});
+		
 		//liste todos os livros do carrinho
+		
+		
 	}
 }
