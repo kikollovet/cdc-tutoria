@@ -6,8 +6,8 @@ public class ComparadorUltimaAtualizacao implements Comparator<Livro> {
 
 	@Override
 	public int compare(Livro livroUm, Livro livroDois) {
-		int valor = (int) livroDois.getDataUltimaAtualizacao().getTimeInMillis() - (int) livroUm.getDataUltimaAtualizacao().getTimeInMillis();
-		return valor;
+		long valor = livroDois.getDataUltimaAtualizacao().getTimeInMillis() - livroUm.getDataUltimaAtualizacao().getTimeInMillis();
+		return (int) valor;
 	}
 
 }

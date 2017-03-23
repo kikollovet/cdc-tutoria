@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Site {
 
-	Set<Livro> livros = new HashSet<>();
+	private Set<Livro> livros = new HashSet<>();
 
 	public Set<Livro> getLivros() {
 		return livros;

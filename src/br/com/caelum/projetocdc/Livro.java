@@ -7,13 +7,13 @@ import java.util.Date;
 
 public class Livro {
 
-	String titulo;
-	String subTitulo;
-	Autor autor;
-	double precoImpresso;
-	double precoEbook;
-	Calendar dataUltimaAtualizacao;
-	Calendar dataLancamento;
+	private String titulo;
+	private String subTitulo;
+	private Autor autor;
+	private double precoImpresso;
+	private double precoEbook;
+	private Calendar dataUltimaAtualizacao;
+	private Calendar dataLancamento;
 
 	public Livro(String titulo, String subTitulo, Autor autor, double precoImpresso, double precoEbook) {
 		this.titulo = titulo;
@@ -100,6 +100,7 @@ public class Livro {
 	public String livroDestaqueTituloDataLancamento(){
 		return this.titulo + " " + this.getDataLancamentoString();
 	}
+	
 	
 
 	@Override
