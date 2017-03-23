@@ -26,4 +26,8 @@ public class CarrinhoDeCompras {
 		}
 		return valorTotal;
 	}
+	
+	public void remove(Livro livro){
+		this.listaLivroCarrinhoCompra.remove(livro);
+	}
 }

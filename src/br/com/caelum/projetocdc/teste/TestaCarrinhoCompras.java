@@ -53,6 +53,14 @@ public class TestaCarrinhoCompras {
 		System.out.println("Preço total: R$" + dF.format(carrinhoDeCompras.exibeValorTotalCarrinho()));
 		
 		//remover livro do carrinho
+		
+		carrinhoDeCompras.remove(l1);
+		carrinhoDeCompras.remove(l1);
+		
+		carrinhoDeCompras.getListaLivroCarrinhoCompra().forEach(livro -> {
+			System.out.println(livro);
+		});
+		
 		//atualizar a quantidade de determinado livro no carrinho
 		//posso comprar mais de um do mesmo livro
 		//liste todos os livros do carrinho
