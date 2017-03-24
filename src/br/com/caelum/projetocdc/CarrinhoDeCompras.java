@@ -10,6 +10,7 @@ import java.util.Set;
 public class CarrinhoDeCompras {
 
 	private List<Livro> listaLivro = new ArrayList<>();
+	private Map<Livro, Integer> mapaLivro = new HashMap<>();
 	
 	public List<Livro> getListaLivro() {
 		return listaLivro;
