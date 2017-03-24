@@ -22,6 +22,10 @@ public class Item {
 		return quantidade;
 	}
 
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public double getPrecoUnitario() {
 		return precoUnitario;
 	}

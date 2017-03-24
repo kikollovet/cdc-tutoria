@@ -34,4 +34,12 @@ public class CarrinhoDeCompras {
 	public void remove(Item item){
 		itens.remove(item);
 	}
+	
+	public void atualizarQuantidadeItem(Item item, int quantidade){
+		for (Item itemNoCarrinho : itens) {
+			if(itemNoCarrinho.equals(item)){
+				itemNoCarrinho.setQuantidade(quantidade);
+			}
+		}
+	}
 }
