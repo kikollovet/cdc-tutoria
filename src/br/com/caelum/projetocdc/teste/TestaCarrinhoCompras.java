@@ -1,6 +1,7 @@
 package br.com.caelum.projetocdc.teste;
 
 import br.com.caelum.projetocdc.Autor;
+import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Item;
 import br.com.caelum.projetocdc.Livro;
 
@@ -19,7 +20,16 @@ public class TestaCarrinhoCompras {
 		Item i1 = new Item(l1, 3);
 		Item i2 = new Item(l2, 2);
 		
+		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
 		
+		carrinhoDeCompras.adiciona(i1);
+		carrinhoDeCompras.adiciona(i2);
+		
+		carrinhoDeCompras.getItens().forEach(item -> {
+			System.out.println(item);
+		});
+		
+		System.out.println(carrinhoDeCompras.getQuantidadeItens());
 
 	}
 

@@ -11,4 +11,15 @@ public class CarrinhoDeCompras {
 		return itens;
 	}
 	
+	public void adiciona(Item item){
+		itens.add(item);
+	}
+	
+	public int getQuantidadeItens(){
+		int quantidadeTotal = 0;
+		for (Item item : itens) {
+			quantidadeTotal += item.getQuantidade();
+		}
+		return quantidadeTotal;
+	}
 }
