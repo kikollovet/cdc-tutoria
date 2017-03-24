@@ -40,50 +40,8 @@ public class CarrinhoDeCompras {
 		this.mapaLivro.remove(livro);
 	}
 	
-	public void atualizarQuantidadeMesmoLivro(Livro livro, int numero){
-		int totalMesmoLivro = 0;
-		
-		for (Livro livro2 : listaLivro) {
-			if(livro.equals(livro2)){
-				totalMesmoLivro++;
-			}
-		}
-		
-		int diferenca = Math.abs(numero - totalMesmoLivro);
-		
-		if(totalMesmoLivro < numero){
-			for(int i = 0; i < diferenca; i++){
-				this.listaLivro.add(livro);
-			}
-		}
-		
-		if(totalMesmoLivro > numero){
-			for(int i = 0; i < diferenca; i++){
-				this.listaLivro.remove(livro);
-			}
-		}
+	public void atualizarQuantidadeMesmoLivro(Livro livro, int quantidade){
+		this.mapaLivro.put(livro, quantidade);
 	}
-	
-	public Map<Livro, Integer> getQuantidadeLivroValorMap(){
-		Map<Livro, Integer> listaQuantidadeValor = new HashMap<>();
-		
-		int quantMesmoLivro = 0;
-				
-		for(int i = 0; i < this.listaLivro.size(); i++){
-			Livro livroUm = listaLivro.get(i);
-			
-			for (Livro livro : listaLivro) {
-				if(livro.equals(livroUm)){
-					quantMesmoLivro++;
-				}
-			}
-			
-			listaQuantidadeValor.put(livroUm, quantMesmoLivro);
-			quantMesmoLivro = 0;
-			
-		}
-		return listaQuantidadeValor;
-	}
-	
 	
 }

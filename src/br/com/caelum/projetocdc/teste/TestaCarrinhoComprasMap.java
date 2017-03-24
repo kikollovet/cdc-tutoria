@@ -43,17 +43,20 @@ public class TestaCarrinhoComprasMap {
 		
 		// atualizar a quantidade de determinado livro no carrinho
 		// posso comprar mais de um do mesmo livro
-		
+		carrinhoDeCompras.atualizarQuantidadeMesmoLivro(l1, 1);
+		carrinhoDeCompras.getMapaLivro().forEach((k,v) ->{
+			System.out.println("Livro: " + k.getTitulo() + "\nQuant: " + v);
+        });
 		
 		//liste todos os livros do carrinho
 		
 		//Imprime quantidade valor HashMap
 		
-		/*System.out.println("======\n======\n======");
-		carrinhoDeCompras.getQuantidadeLivroValorMap().forEach((k,v)-> {
+		System.out.println("======\n======\n======");
+		carrinhoDeCompras.getMapaLivro().forEach((k,v)-> {
 			System.out.println("Título: " + k.getTitulo() + "\nQuantidade: " + v +
 					"\nPreço: R$" + (k.getPrecoImpresso() * v));
-		});*/
+		});
 		
 		
 	}
