@@ -20,7 +20,6 @@ public class Site {
 		this.livros.add(livro);
 	}
 
-
 	public List<Livro> listaUltimosLancamentos() {
 		return this.livros.stream().sorted(new ComparadorUltimoLancamento()).limit(5).collect(Collectors.toList());
 	}
