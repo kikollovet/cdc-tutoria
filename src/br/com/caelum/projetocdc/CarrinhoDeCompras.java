@@ -59,28 +59,6 @@ public class CarrinhoDeCompras {
 		}
 	}
 	
-	public Set<String> getQuantidadeLivroValor(){
-		Set<String> listaQuantidadeValor = new HashSet<>();
-		
-		int quantMesmoLivro = 0;
-				
-		for(int i = 0; i < this.listaLivro.size(); i++){
-			Livro livroUm = listaLivro.get(i);
-			
-			for (Livro livro : listaLivro) {
-				if(livro.equals(livroUm)){
-					quantMesmoLivro++;
-				}
-			}
-			
-			listaQuantidadeValor.add(livroUm.getTitulo() + " - quant: " + quantMesmoLivro + 
-					" Preço: R$" + (quantMesmoLivro * livroUm.getPrecoImpresso()));
-			quantMesmoLivro = 0;
-			
-		}
-		return listaQuantidadeValor;
-	}
-	
 	public Map<Livro, Integer> getQuantidadeLivroValorMap(){
 		Map<Livro, Integer> listaQuantidadeValor = new HashMap<>();
 		

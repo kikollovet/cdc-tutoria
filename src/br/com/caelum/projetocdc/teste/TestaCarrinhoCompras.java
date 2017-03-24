@@ -78,19 +78,12 @@ public class TestaCarrinhoCompras {
 		});
 		
 		
-		//Imprime quantidade valor Set de String
-		
-		System.out.println("=========\n============\n=====");
-		carrinhoDeCompras.getQuantidadeLivroValor().forEach(dadosLivro -> {
-			System.out.println(dadosLivro);
-		});
-		
 		//Imprime quantidade valor HashMap
-		
-		System.out.println("============\n==========\n========");
-		for (Map.Entry<Livro, Integer> entry : carrinhoDeCompras.getQuantidadeLivroValorMap().entrySet()) {
-			System.out.println(entry.getKey() + "\nQuantidade: " + entry.getValue() + 
-					"\nValor: R$" + (entry.getKey().getPrecoImpresso()) * entry.getValue() + "\n=====");
-		}
+				
+		System.out.println("======\n======\n======");
+		carrinhoDeCompras.getQuantidadeLivroValorMap().forEach((k,v)-> {
+			System.out.println("Título: " + k.getTitulo() + "\nQuantidade: " + v +
+					"\nPreço: R$" + (k.getPrecoImpresso() * v));
+		});
 	}
 }
