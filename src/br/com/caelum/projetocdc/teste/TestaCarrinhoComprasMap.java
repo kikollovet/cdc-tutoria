@@ -35,9 +35,15 @@ public class TestaCarrinhoComprasMap {
 		System.out.println(carrinhoDeCompras.getValorTotalCarrinho());
 		
 		// remover livro do carrinho
-
+		//carrinhoDeCompras.remove(l1);
+		//carrinhoDeCompras.getMapaLivro().forEach((k,v) ->{
+			//System.out.println("Livro: " + k.getTitulo() + "\nQuant: " + v);
+	    //});
+		
+		
 		// atualizar a quantidade de determinado livro no carrinho
 		// posso comprar mais de um do mesmo livro
+		
 		
 		//liste todos os livros do carrinho
 		
