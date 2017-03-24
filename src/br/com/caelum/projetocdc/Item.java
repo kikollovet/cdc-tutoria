@@ -22,13 +22,20 @@ public class Item {
 		return quantidade;
 	}
 
+	public double getPrecoUnitario() {
+		return precoUnitario;
+	}
+
+	public double getPrecoTotal() {
+		return precoTotal;
+	}
+
 	@Override
 	public String toString() {
-		return "Livro: " + livro.getTitulo() + "\nQuantidade: " + this.quantidade +
-				"\nPreço unidade: R$" + this.precoUnitario + "\nPreço Total: R$" +
-				this.precoTotal + "\n=========";
+		return "Livro: " + livro.getTitulo() + "\nQuantidade: " + this.quantidade + "\nPreço unidade: R$"
+				+ this.precoUnitario + "\nPreço Total: R$" + this.precoTotal + "\n=========";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,6 +60,5 @@ public class Item {
 			return false;
 		return true;
 	}
-	
-	
+
 }

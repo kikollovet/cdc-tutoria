@@ -30,7 +30,15 @@ public class TestaCarrinhoCompras {
 		});
 		
 		System.out.println(carrinhoDeCompras.getQuantidadeItens());
+		
+		System.out.println(carrinhoDeCompras.getValorTotal());
+		
+		
+		carrinhoDeCompras.getItens().forEach(item -> {
+			System.out.println(item);
+		});
 
+		carrinhoDeCompras.remove(i1);
 	}
 
 }

@@ -22,4 +22,16 @@ public class CarrinhoDeCompras {
 		}
 		return quantidadeTotal;
 	}
+	
+	public double getValorTotal(){
+		double valorTotal = 0.00;
+		for (Item item : itens) {
+			valorTotal += item.getPrecoTotal();
+		}
+		return valorTotal;
+	}
+	
+	public void remove(Item item){
+		itens.remove(item);
+	}
 }
