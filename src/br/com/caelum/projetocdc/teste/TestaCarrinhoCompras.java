@@ -35,11 +35,11 @@ public class TestaCarrinhoCompras {
 		//exiba a quantidade de livros no carrinho
 		
 		System.out.println("Quantidade livros no carrinho " + 
-		carrinhoDeCompras.exibeQuantidadeLivrosCarrinho());
+		carrinhoDeCompras.getQuantidadeLivrosCarrinho());
 		
 		//exiba o valor total do carrinho
 		DecimalFormat dF = new DecimalFormat("0.00");
-		System.out.println("Preço total: R$" + dF.format(carrinhoDeCompras.exibeValorTotalCarrinho()));
+		System.out.println("Preço total: R$" + dF.format(carrinhoDeCompras.getValorTotalCarrinho()));
 		
 		//remover livro do carrinho
 		

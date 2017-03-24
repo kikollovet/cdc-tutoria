@@ -19,11 +19,11 @@ public class CarrinhoDeCompras {
 		this.listaLivro.add(livro);
 	}
 	
-	public int exibeQuantidadeLivrosCarrinho(){
+	public int getQuantidadeLivrosCarrinho(){
 		return this.listaLivro.size();
 	}
 	
-	public double exibeValorTotalCarrinho(){
+	public double getValorTotalCarrinho(){
 		double valorTotal = 0.0;
 		for (Livro livro : listaLivro) {
 			valorTotal += livro.getPrecoImpresso();
