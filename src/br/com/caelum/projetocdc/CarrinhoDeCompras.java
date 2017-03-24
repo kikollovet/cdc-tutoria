@@ -21,7 +21,11 @@ public class CarrinhoDeCompras {
 	}
 	
 	public int getQuantidadeLivrosCarrinho(){
-		return this.listaLivro.size();
+		int quantidadeTotalLivro = 0;
+		for(Map.Entry<Livro, Integer> mapa: this.mapaLivro.entrySet()){
+			quantidadeTotalLivro += mapa.getValue();
+		}
+		return quantidadeTotalLivro;
 	}
 	
 	public double getValorTotalCarrinho(){
