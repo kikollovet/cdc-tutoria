@@ -30,14 +30,14 @@ public class CarrinhoDeCompras {
 	
 	public double getValorTotalCarrinho(){
 		double valorTotal = 0.0;
-		for (Livro livro : listaLivro) {
-			valorTotal += livro.getPrecoImpresso();
+		for(Map.Entry<Livro, Integer> mapa: this.mapaLivro.entrySet()){
+			valorTotal += (mapa.getKey().getPrecoImpresso() * mapa.getValue());
 		}
 		return valorTotal;
 	}
 	
 	public void remove(Livro livro){
-		this.listaLivro.remove(livro);
+		this.mapaLivro.remove(livro);
 	}
 	
 	public void atualizarQuantidadeMesmoLivro(Livro livro, int numero){

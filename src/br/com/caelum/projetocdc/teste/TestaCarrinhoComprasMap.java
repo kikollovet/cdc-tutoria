@@ -32,6 +32,7 @@ public class TestaCarrinhoComprasMap {
 		System.out.println(carrinhoDeCompras.getQuantidadeLivrosCarrinho());
 		
 		// exiba o valor total do carrinho
+		System.out.println(carrinhoDeCompras.getValorTotalCarrinho());
 		
 		// remover livro do carrinho
 
