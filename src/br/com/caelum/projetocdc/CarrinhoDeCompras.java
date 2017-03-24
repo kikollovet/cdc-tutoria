@@ -12,12 +12,12 @@ public class CarrinhoDeCompras {
 	private List<Livro> listaLivro = new ArrayList<>();
 	private Map<Livro, Integer> mapaLivro = new HashMap<>();
 	
-	public List<Livro> getListaLivro() {
-		return listaLivro;
+	public Map<Livro, Integer> getMapaLivro(){
+		return mapaLivro;
 	}
 
-	public void adiciona(Livro livro){
-		this.listaLivro.add(livro);
+	public void adiciona(Livro livro, int quantidade){
+		this.mapaLivro.put(livro, quantidade);
 	}
 	
 	public int getQuantidadeLivrosCarrinho(){

@@ -22,6 +22,11 @@ public class TestaCarrinhoComprasMap {
 
 		// adicione livros no carrinho
 		
+		/*carrinhoDeCompras.adiciona(l1, 2);
+		carrinhoDeCompras.getMapaLivro().forEach((k,v) ->{
+			System.out.println("Livro: " + k.getTitulo() + "\nQuant: " + v);
+		});*/
+		
 		// exiba a quantidade de livros no carrinho
 		
 		// exiba o valor total do carrinho
