@@ -10,8 +10,8 @@ public class Item {
 	public Item(Livro livro, int quantidade) {
 		this.livro = livro;
 		this.quantidade = quantidade;
-		this.precoUnitario = livro.getPrecoImpresso();
-		this.precoTotal = livro.getPrecoImpresso() * quantidade;
+		this.precoUnitario = livro.getPreco();
+		this.precoTotal = livro.getPreco() * quantidade;
 	}
 
 	public Livro getLivro() {
@@ -24,6 +24,7 @@ public class Item {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+		this.precoTotal = quantidade * this.precoUnitario;
 	}
 
 	public double getPrecoUnitario() {
@@ -36,7 +37,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Livro: " + livro.getTitulo() + "\nQuantidade: " + this.quantidade + "\nPreço unidade: R$"
+		return "Livro: " + livro.getTitulo() + "\nQuantidade: " + this.quantidade + "\nTipo: " + livro.getTipo() + "\nPreço unidade: R$"
 				+ this.precoUnitario + "\nPreço Total: R$" + this.precoTotal + "\n=========";
 	}
 
