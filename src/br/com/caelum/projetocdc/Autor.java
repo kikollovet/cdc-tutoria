@@ -3,6 +3,7 @@ package br.com.caelum.projetocdc;
 public class Autor {
 
 	private String nome;
+	private int id;
 	
 	public Autor (String nome){
 		this.nome = nome;
@@ -12,6 +13,18 @@ public class Autor {
 		return nome;
 	}
 	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return nome;

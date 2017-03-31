@@ -37,7 +37,7 @@ public class AutorBDDao implements AutorDAO{
 		}
 	}
 	
-	public void altera(Autor autor, int id) {
+	public void alteraNome(String nome, int id) {
 		Connection con = null;
 		
 		try{
@@ -48,7 +48,7 @@ public class AutorBDDao implements AutorDAO{
 			try{
 				PreparedStatement stmt = con.prepareStatement(sql);
 				
-				stmt.setString(1, autor.getNome());
+				stmt.setString(1, nome);
 				stmt.setInt(2, id);
 				
 				stmt.execute();

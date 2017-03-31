@@ -13,11 +13,15 @@ public class TestaAutorDAO {
 		Autor autor = new Autor("Alexandre Lourenço");
 		Autor autor2 = new Autor("Joaquim Torres");
 		
-		AutorDAO dao = new AutorBDDao(); 
+		AutorDAO dao = new AutorMemoria(); 
 		dao.adiciona(autor);
 		dao.adiciona(autor2);
 		
 		System.out.println("adicionado");
-		//dao.altera(autor, 2);
+		dao.alteraNome("Pedro Albuquerque", 2);
+		
+		System.out.println(autor.getId());
+		System.out.println(autor2.getId());
+		System.out.println(autor2);
 	}
 }
