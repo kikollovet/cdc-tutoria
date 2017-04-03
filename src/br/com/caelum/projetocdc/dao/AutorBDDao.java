@@ -69,7 +69,6 @@ public class AutorBDDao implements AutorDAO{
 	
 	public Autor getAutor(int id){
 		
-		Autor autor = new Autor(null);
 		
 		try(Connection c = new ConnectionFactory().getConnection()) {
 			
@@ -80,21 +79,20 @@ public class AutorBDDao implements AutorDAO{
 			
 			ResultSet rs = stmt.executeQuery();
 			
-			while(rs.next()){
-			
+			if(rs.next()){
+				
 				String nome = rs.getString("nome");
 			
-				autor.setNome(nome);
+				Autor autor = new Autor(nome);
 				autor.setId(id);
+				
+				return autor;
 			}
 			
-			rs.close();
-			stmt.close();
-			
+			return null;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		return autor;
 	}
 	
 	public void remove(int id){
