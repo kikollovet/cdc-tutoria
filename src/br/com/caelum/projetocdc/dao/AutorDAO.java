@@ -5,5 +5,5 @@ import br.com.caelum.projetocdc.Autor;
 public interface AutorDAO {
 
 	public void adiciona(Autor autor);
-	public void alteraNome(String nome, int id);
+	public void altera(Autor autor);
 }

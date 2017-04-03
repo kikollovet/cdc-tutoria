@@ -23,10 +23,10 @@ public class AutorMemoria implements AutorDAO{
 
 
 	@Override
-	public void alteraNome(String nome, int id) {
-		for (Autor autor : autores) {
-			if(autor.getId() == id){
-				autor.setNome(nome);
+	public void altera(Autor autor) {
+		for (Autor autorLista : autores) {
+			if(autorLista.getId() == autor.getId()){
+				autorLista.setNome(autor.getNome());
 			}
 		}
 		
