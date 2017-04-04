@@ -27,5 +27,8 @@ public class Usuario {
 		return email;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Nome: " + this.nome + " - email: " + this.email;
+	}
 }
