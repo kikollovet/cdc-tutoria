@@ -107,4 +107,21 @@ public class LivroBDDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void remove(int id){
+		
+		try(Connection c = new ConnectionFactory().getConnection()){
+			
+			String sql = "delete from livros where id=?;";
+			
+			PreparedStatement stmt = c.prepareStatement(sql);
+			stmt.setInt(1, id);
+			
+			stmt.execute();
+			stmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

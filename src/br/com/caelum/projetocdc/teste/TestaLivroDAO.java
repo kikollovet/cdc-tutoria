@@ -19,7 +19,8 @@ public class TestaLivroDAO {
 		LivroBDDao dao = new LivroBDDao();
 		//dao.adiciona(livro);
 		//dao.altera(livro);
-		System.out.println(dao.getLivro(1));
+		//System.out.println(dao.getLivro(1));
+		//dao.remove(1);
 	}
 
 }
