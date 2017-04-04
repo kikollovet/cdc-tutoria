@@ -11,8 +11,8 @@ public class TestaLivroDAO {
 
 	public static void main(String[] args) {
 
-		Autor joaquim = new Autor("Joaquim Torres");
-		joaquim.setId(1);
+		Autor pedro = new Autor("Willian Molinari");
+		pedro.setId(6);
 		
 		Calendar dataUltimaAtualizacao = Calendar.getInstance();
 		dataUltimaAtualizacao.set(2017, 03, 01);
@@ -21,14 +21,14 @@ public class TestaLivroDAO {
 		dataLancamento.set(2014, 02, 15);
 		
 		
-		Livro livro = new Livro("Guia da Startup", "Como startups e empresas estabelecidas podem criar produtos de software rentáveis", 
-				joaquim, Tipo.EBOOK, 29.90, dataUltimaAtualizacao, dataLancamento);
-		livro.setId(1);
+		Livro livro = new Livro("Desconstruindo a Web", "As tecnologias por tráz de uma requisição", 
+				pedro, Tipo.IMPRESSO, 59.90, dataUltimaAtualizacao, dataLancamento);
+		//livro.setId(1);
 		
 		LivroBDDao dao = new LivroBDDao();
-		//dao.adiciona(livro);
+		dao.adiciona(livro);
 		//dao.altera(livro);
-		System.out.println(dao.getLivro(2).getDataUltimaAtualizacaoString());
+		//System.out.println(dao.getLivro(2).getDataUltimaAtualizacaoString());
 		//dao.remove(1);
 	}
 
