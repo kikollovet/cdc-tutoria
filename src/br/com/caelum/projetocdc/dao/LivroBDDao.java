@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
@@ -89,8 +90,13 @@ public class LivroBDDao {
 				double preco = rs.getDouble("preco");
 				String tipo = rs.getString("tipo");
 				
+				int idAutor = rs.getInt("autor");
+				
+				AutorBDDao dao = new AutorBDDao();
+				Autor autor = dao.getAutor(idAutor);
+				
 				Livro livro = new Livro(titulo, subTitulo, 
-						null, Tipo.valueOf(tipo), preco, dua, dl);
+						autor, Tipo.valueOf(tipo), preco, dua, dl);
 				livro.setId(id);
 				
 				return livro;
