@@ -23,32 +23,16 @@ public class Livro {
 		this.tipo = tipo;
 		this.preco = preco;
 	}
-
-
+	
 	public Livro(String titulo, String subTitulo, Autor autor, Tipo tipoLivro, double preco,
-			String dataUltimaAtualizacao, String dataLancamento) {
+			Calendar dataUltimaAtualizacao, Calendar dataLancamento) {
 		this.titulo = titulo;
 		this.subTitulo = subTitulo;
 		this.autor = autor;
 		this.tipo = tipoLivro;
 		this.preco = preco;
-
-		try {
-			Date dUA = new SimpleDateFormat("dd/MM/yyyy").parse(dataUltimaAtualizacao);
-			this.dataUltimaAtualizacao = Calendar.getInstance();
-			this.dataUltimaAtualizacao.setTime(dUA);
-		} catch (ParseException e) {
-			System.out.println("Erro de conversão da data");
-		}
-
-		try {
-			Date dL = new SimpleDateFormat("dd/MM/yyyy").parse(dataLancamento);
-			this.dataLancamento = Calendar.getInstance();
-			this.dataLancamento.setTime(dL);
-		} catch (ParseException e) {
-			System.out.println("Erro de conversão da data");
-		}
-
+		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+		this.dataLancamento = dataLancamento;
 	}
 
 	public int getId() {

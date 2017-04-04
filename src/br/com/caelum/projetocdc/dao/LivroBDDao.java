@@ -81,11 +81,9 @@ public class LivroBDDao {
 				
 				Calendar dataUltimaAtualizacao = Calendar.getInstance();
 				dataUltimaAtualizacao.setTime(rs.getDate("dataultimaatualizacao"));
-				String dua = sdf.format(dataUltimaAtualizacao.getTime());
 				
 				Calendar dataLancamento = Calendar.getInstance();
 				dataLancamento.setTime(rs.getDate("datalancamento"));
-				String dl = sdf.format(dataLancamento.getTime());
 				
 				double preco = rs.getDouble("preco");
 				String tipo = rs.getString("tipo");
@@ -96,7 +94,7 @@ public class LivroBDDao {
 				Autor autor = dao.getAutor(idAutor);
 				
 				Livro livro = new Livro(titulo, subTitulo, 
-						autor, Tipo.valueOf(tipo), preco, dua, dl);
+						autor, Tipo.valueOf(tipo), preco, dataUltimaAtualizacao, dataLancamento);
 				livro.setId(id);
 				
 				return livro;
