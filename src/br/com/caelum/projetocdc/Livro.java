@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Livro {
 
+	private int id;
 	private String titulo;
 	private String subTitulo;
 	private Autor autor;
@@ -50,6 +51,14 @@ public class Livro {
 
 	}
 
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}
