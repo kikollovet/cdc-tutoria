@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import br.com.caelum.projetocdc.Autor;
@@ -66,7 +65,7 @@ public class LivroBDDao {
 		
 		try(Connection c = new ConnectionFactory().getConnection()){
 			
-			String sql = "select * from livros where id=?;";
+			String sql = "select * from livros join autores on livros.autor = autores.id where livros.id=?;";
 			
 			PreparedStatement stmt = c.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -77,8 +76,6 @@ public class LivroBDDao {
 				String titulo = rs.getString("titulo");
 				String subTitulo = rs.getString("subtitulo");
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				
 				Calendar dataUltimaAtualizacao = Calendar.getInstance();
 				dataUltimaAtualizacao.setTime(rs.getDate("dataultimaatualizacao"));
 				
@@ -88,10 +85,14 @@ public class LivroBDDao {
 				double preco = rs.getDouble("preco");
 				String tipo = rs.getString("tipo");
 				
+				String nomeAutor = rs.getString("nome");
 				int idAutor = rs.getInt("autor");
 				
-				AutorBDDao dao = new AutorBDDao();
-				Autor autor = dao.getAutor(idAutor);
+				//AutorBDDao dao = new AutorBDDao();
+				//Autor autor = dao.getAutor(idAutor);
+				
+				Autor autor = new Autor(nomeAutor);
+				autor.setId(idAutor);
 				
 				Livro livro = new Livro(titulo, subTitulo, 
 						autor, Tipo.valueOf(tipo), preco, dataUltimaAtualizacao, dataLancamento);
