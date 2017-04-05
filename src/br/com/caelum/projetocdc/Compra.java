@@ -35,4 +35,8 @@ public class Compra {
 	public Set<Item> getItens() {
 		return itens;
 	}
+	
+	public void adicionaItens(Item item) {
+		this.itens.add(item);
+	}
 }
