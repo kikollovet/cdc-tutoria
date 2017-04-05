@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import br.com.caelum.projetocdc.Compra;
+import br.com.caelum.projetocdc.Item;
 import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class CompraBDDao {
@@ -31,6 +32,18 @@ public class CompraBDDao {
 			}
 			
 			
+			String sql2 = "insert into itens (id_compra, id_livro, quantidade, preco) values (?,?,?,?);";
+			
+			PreparedStatement stmt2 = c.prepareStatement(sql2);
+			
+			for (Item item : compra.getItens()) {
+				
+				stmt2.setInt(1, idCompra);
+				stmt2.setInt(2, item.getLivro().getId());
+				stmt2.setInt(3, item.getQuantidade());
+				stmt2.setDouble(4, item.getPrecoUnitario());
+				stmt2.execute();
+			}
 			
 			
 		} catch (SQLException e) {
