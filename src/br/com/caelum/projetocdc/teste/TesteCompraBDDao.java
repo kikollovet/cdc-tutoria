@@ -6,6 +6,7 @@ import br.com.caelum.projetocdc.Compra;
 import br.com.caelum.projetocdc.Item;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Usuario;
+import br.com.caelum.projetocdc.dao.CompraBDDao;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.dao.UsuarioBDDao;
 
@@ -28,6 +29,9 @@ public class TesteCompraBDDao {
 		Compra compra = new Compra(usuario, dataHoje);
 		compra.adicionaItens(item1);
 		compra.adicionaItens(item2);
+		
+		CompraBDDao cDao = new CompraBDDao();
+		System.out.println(cDao.adiciona(compra));
 
 	}
 
