@@ -33,7 +33,6 @@ public class CompraBDDao {
 			
 			
 			
-			return insercao;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
