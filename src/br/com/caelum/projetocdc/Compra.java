@@ -39,4 +39,9 @@ public class Compra {
 	public void adicionaItens(Item item) {
 		this.itens.add(item);
 	}
+	
+	@Override
+	public String toString() {
+		return "Usuario: " + this.usuario + "Data da compra: " + this.data + "\nItens: " + this.itens;
+	}
 }
