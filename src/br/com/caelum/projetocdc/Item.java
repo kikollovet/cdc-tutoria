@@ -42,7 +42,8 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Livro: " + livro.getTitulo() + "\nQuantidade: " + this.quantidade + "\nTipo: " + livro.getTipo() + "\nPreço unidade: R$"
-				+ this.precoUnitario + "\nPreço Total: R$" + this.precoTotal + "\n=========";
+				+ this.precoUnitario + "\nPreço Total: R$" + this.precoTotal + "\nData lancamento: " + livro.getDataLancamentoString() 
+				+ "\nData ultima atualizacao: " + this.livro.getDataUltimaAtualizacaoString() + "\n=========\n";
 	}
 
 	@Override
