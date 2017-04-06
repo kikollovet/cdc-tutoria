@@ -31,7 +31,9 @@ public class TesteCompraBDDao {
 		compra.adicionaItens(item2);
 		
 		CompraBDDao cDao = new CompraBDDao();
-		cDao.adiciona(compra);
+		//cDao.adiciona(compra);
+		
+		System.out.println(cDao.getCompra(6));
 
 	}
 

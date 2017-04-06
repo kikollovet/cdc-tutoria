@@ -31,6 +31,10 @@ public class Item {
 		return precoUnitario;
 	}
 
+	public void setPrecoUnitario(double precoUnitario) {
+		this.precoUnitario = precoUnitario;
+		this.precoTotal = precoUnitario * this.quantidade;
+	}
 	public double getPrecoTotal() {
 		return precoTotal;
 	}

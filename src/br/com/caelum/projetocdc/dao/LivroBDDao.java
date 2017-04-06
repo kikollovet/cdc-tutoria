@@ -88,8 +88,6 @@ public class LivroBDDao {
 				String nomeAutor = rs.getString("a.nome");
 				int idAutor = rs.getInt("l.autor");
 				
-				//AutorBDDao dao = new AutorBDDao();
-				//Autor autor = dao.getAutor(idAutor);
 				
 				Autor autor = new Autor(nomeAutor);
 				autor.setId(idAutor);
