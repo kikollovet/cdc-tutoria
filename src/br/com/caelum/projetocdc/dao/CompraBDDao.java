@@ -31,7 +31,6 @@ public class CompraBDDao {
 				idCompra = rs.getInt(1);
 			}
 			
-			
 			String sql2 = "insert into itens (id_compra, id_livro, quantidade, preco) values (?,?,?,?);";
 			
 			PreparedStatement stmt2 = c.prepareStatement(sql2);
@@ -50,4 +49,6 @@ public class CompraBDDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
 }

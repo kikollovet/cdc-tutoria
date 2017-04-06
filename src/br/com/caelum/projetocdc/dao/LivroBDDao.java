@@ -65,7 +65,7 @@ public class LivroBDDao {
 		
 		try(Connection c = new ConnectionFactory().getConnection()){
 			
-			String sql = "select * from livros join autores on livros.autor = autores.id where livros.id=?;";
+			String sql = "select * from livros l join autores a on l.autor = a.id where l.id=?;";
 			
 			PreparedStatement stmt = c.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -85,8 +85,8 @@ public class LivroBDDao {
 				double preco = rs.getDouble("preco");
 				String tipo = rs.getString("tipo");
 				
-				String nomeAutor = rs.getString("nome");
-				int idAutor = rs.getInt("autor");
+				String nomeAutor = rs.getString("a.nome");
+				int idAutor = rs.getInt("l.autor");
 				
 				//AutorBDDao dao = new AutorBDDao();
 				//Autor autor = dao.getAutor(idAutor);
