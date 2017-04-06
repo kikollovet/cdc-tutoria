@@ -1,5 +1,6 @@
 package br.com.caelum.projetocdc;
 
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,5 +42,15 @@ public class CarrinhoDeCompras {
 				itemNoCarrinho.setQuantidade(quantidade);
 			}
 		}
+	}
+	
+	public Compra getCompra(Usuario usuario, Calendar data){
+		Compra compra = new Compra(usuario, data);
+		
+		for (Item item : itens) {
+			compra.getItens().add(item);
+		}
+		
+		return compra;
 	}
 }
