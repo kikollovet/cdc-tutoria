@@ -59,7 +59,7 @@ public class CompraBDDao {
 		
 		try(Connection c = new ConnectionFactory().getConnection()){
 			
-			Compra compra = new Compra();
+			Compra compra = null;
 			
 			String sql = "select * from usuario u join compra c on u.id = c.id_usuario where c.id = ?;";
 			
@@ -118,7 +118,7 @@ public class CompraBDDao {
 				Item item = new Item(livro, quantidade);
 				item.setPrecoUnitario(precoItenCompra);
 				
-				compra.getItens().add(item);
+				compra.adicionaItens(item);
 			}
 			
 			return compra;

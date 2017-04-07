@@ -13,10 +13,6 @@ public class Compra {
 	private Calendar data;
 	private Set<Item> itens = new HashSet<>();
 	
-	public Compra(){
-		
-	}
-	
 	public Compra(Usuario usuario, Calendar data) {
 		this.usuario = usuario;
 		this.data = data;
