@@ -18,14 +18,20 @@ import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class CompraBDDao {
 
+	private Connection connection;
+	
+	public CompraBDDao(Connection connection){
+		this.connection = connection;
+	}
+	
 	public void adiciona(Compra compra) {
 		
-		try(Connection c = new ConnectionFactory().getConnection()) {
+		try {
 			int idCompra = 0;
 			
 			String sql = "insert into compra (id_usuario, data) values (?,?);";
 			
-			PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, compra.getUsuario().getId());
 			stmt.setDate(2, new Date(compra.getData().getTimeInMillis()));
 			
@@ -38,7 +44,7 @@ public class CompraBDDao {
 			
 			String sql2 = "insert into itens (id_compra, id_livro, quantidade, preco) values (?,?,?,?);";
 			
-			PreparedStatement stmt2 = c.prepareStatement(sql2);
+			PreparedStatement stmt2 = this.connection.prepareStatement(sql2);
 			
 			for (Item item : compra.getItens()) {
 				
@@ -57,13 +63,13 @@ public class CompraBDDao {
 	
 	public Compra getCompra(int id) {
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			Compra compra = null;
 			
 			String sql = "select * from usuario u join compra c on u.id = c.id_usuario where c.id = ?;";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			
 			ResultSet rs = stmt.executeQuery();
@@ -85,7 +91,7 @@ public class CompraBDDao {
 			
 			String sql2 = "select * from itens i join livros l on i.id_livro = l.id join autores a on l.autor = a.id where i.id_compra = ?;";
 			
-			PreparedStatement stmt2 = c.prepareStatement(sql2);
+			PreparedStatement stmt2 = this.connection.prepareStatement(sql2);
 			stmt2.setInt(1, id);
 			
 			ResultSet rs2 = stmt2.executeQuery();

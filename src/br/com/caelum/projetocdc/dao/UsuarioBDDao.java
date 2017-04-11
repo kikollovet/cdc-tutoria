@@ -10,13 +10,19 @@ import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class UsuarioBDDao {
 
+	private Connection connection;
+	
+	public UsuarioBDDao(Connection connection){
+		this.connection = connection;
+	}
+	
 	public void adiciona(Usuario usuario){
 		
-		try(Connection c = new ConnectionFactory().getConnection()) {
+		try{
 			
 			String sql = "insert into usuario (nome,email) values (?,?);";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getEmail());
 			
@@ -29,11 +35,11 @@ public class UsuarioBDDao {
 	
 	public void altera(Usuario usuario) {
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "update usuario set nome=?, email=? where id=?;";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getEmail());
 			stmt.setInt(3, usuario.getId());
@@ -47,11 +53,11 @@ public class UsuarioBDDao {
 	
 	public Usuario getUsuario(int id){
 		
-		try (Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "select * from usuario where id=?;";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			
 			ResultSet rs = stmt.executeQuery();
@@ -75,11 +81,11 @@ public class UsuarioBDDao {
 	
 	public void remove(int id){
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "delete from usuario where id=?;";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			
 			stmt.execute();

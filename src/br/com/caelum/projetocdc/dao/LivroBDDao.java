@@ -13,15 +13,21 @@ import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class LivroBDDao {
+	
+	private Connection connection;
+	
+	public LivroBDDao(Connection connection){
+		this.connection = connection;
+	}
 
 	public void adiciona(Livro livro){
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "insert into livros (titulo, subtitulo, autor, dataultimaatualizacao, "
 					+ "datalancamento, preco, tipo) values(?,?,?,?,?,?,?)";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, livro.getTitulo());
 			stmt.setString(2, livro.getSubTitulo());
 			stmt.setInt(3, livro.getAutor().getId());
@@ -39,12 +45,12 @@ public class LivroBDDao {
 	
 	public void altera(Livro livro){
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "update livros set titulo=?, subtitulo=?, autor=?, dataultimaatualizacao=?, "
 					+ "datalancamento=?, preco=?, tipo=? where id=?;";
 					
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setString(1, livro.getTitulo());
 			stmt.setString(2, livro.getSubTitulo());
 			stmt.setInt(3, livro.getAutor().getId());
@@ -63,11 +69,11 @@ public class LivroBDDao {
 	
 	public Livro getLivro(int id){
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "select * from livros l join autores a on l.autor = a.id where l.id=?;";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			
 			ResultSet rs = stmt.executeQuery();
@@ -107,11 +113,11 @@ public class LivroBDDao {
 	
 	public void remove(int id){
 		
-		try(Connection c = new ConnectionFactory().getConnection()){
+		try{
 			
 			String sql = "delete from livros where id=?;";
 			
-			PreparedStatement stmt = c.prepareStatement(sql);
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			
 			stmt.execute();

@@ -1,5 +1,7 @@
 package br.com.caelum.projetocdc.teste;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 import br.com.caelum.projetocdc.Autor;
@@ -7,12 +9,15 @@ import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.dao.AutorBDDao;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
+import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class TestaLivroDAO {
 
 	public static void main(String[] args) {
 
-		AutorBDDao daoAutor = new AutorBDDao();
+		Connection connection = new ConnectionFactory().getConnection();
+		
+		AutorBDDao daoAutor = new AutorBDDao(connection);
 		Autor willian = daoAutor.getAutor(6);
 		
 		
@@ -27,11 +32,17 @@ public class TestaLivroDAO {
 				willian, Tipo.IMPRESSO, 59.90, dataUltimaAtualizacao, dataLancamento);
 		//livro.setId(1);
 		
-		LivroBDDao dao = new LivroBDDao();
-		//dao.adiciona(livro);
-		//dao.altera(livro);
+		LivroBDDao dao = new LivroBDDao(connection);
+		//dao.adiciona(livro, connection);
+		//dao.altera(livro, connection);
 		System.out.println(dao.getLivro(3));
-		//dao.remove(1);
+		//dao.remove(1, connection);
+		
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
