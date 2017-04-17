@@ -53,4 +53,15 @@ public class CarrinhoDeCompras {
 		
 		return compra;
 	}
+
+	public int getQuantidadeDeUmItem(Item itemUm) {
+		int quantidade = 0;
+		for(Item itemNoCarrinho: itens){
+			if(itemNoCarrinho.equals(itemUm)){
+				quantidade = itemNoCarrinho.getQuantidade();
+				break;
+			}
+		}
+		return quantidade;
+	}
 }

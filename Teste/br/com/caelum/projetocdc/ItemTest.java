@@ -9,23 +9,25 @@ import org.junit.Test;
 
 public class ItemTest {
 
+	public Autor everton;
+	public Livro livroUm;
+	
 	@Before
 	public void setUp(){
-		
-	}
-	
-	@Test
-	public void validaSePrecoTotalEhCalculadoCertoAPartirDaQuantidade(){
 		Calendar dataUltimaAtualizacao = Calendar.getInstance();
 		dataUltimaAtualizacao.set(2017, 03, 01);
 		
 		Calendar dataLancamento = Calendar.getInstance();
 		dataLancamento.set(2014, 02, 15);
 		
-		Autor everton = new Autor("Everton Coimbra de Araújo");
-		Livro livroUm = new Livro("ASP.NET MVC5", "Crie aplicações Web na plataforma Microsoft", everton, Tipo.EBOOK, 30,
+		this.everton = new Autor("Everton Coimbra de Araújo");
+		this.livroUm = new Livro("ASP.NET MVC5", "Crie aplicações Web na plataforma Microsoft", everton, Tipo.EBOOK, 30,
 				dataUltimaAtualizacao, dataLancamento);
 		
+	}
+	
+	@Test
+	public void validaSePrecoTotalEhCalculadoCertoAPartirDaQuantidade(){
 		Item item = new Item(livroUm, 2);
 		
 		assertEquals(60, item.getPrecoTotal(), 0.00001);
@@ -33,16 +35,6 @@ public class ItemTest {
 	
 	@Test
 	public void validaSePrecoTotalMudaQuandoQuantidadeDeLivrosEhAlterada(){
-		Calendar dataUltimaAtualizacao = Calendar.getInstance();
-		dataUltimaAtualizacao.set(2017, 03, 01);
-		
-		Calendar dataLancamento = Calendar.getInstance();
-		dataLancamento.set(2014, 02, 15);
-		
-		Autor everton = new Autor("Everton Coimbra de Araújo");
-		Livro livroUm = new Livro("ASP.NET MVC5", "Crie aplicações Web na plataforma Microsoft", everton, Tipo.EBOOK, 30,
-				dataUltimaAtualizacao, dataLancamento);
-		
 		Item item = new Item(livroUm, 2);
 		
 		assertEquals(60, item.getPrecoTotal(), 0.00001);
@@ -54,16 +46,6 @@ public class ItemTest {
 	
 	@Test
 	public void validaSeMudandoPrecoUnitarioAlteraOValorDoPrecoTotal(){
-		Calendar dataUltimaAtualizacao = Calendar.getInstance();
-		dataUltimaAtualizacao.set(2017, 03, 01);
-		
-		Calendar dataLancamento = Calendar.getInstance();
-		dataLancamento.set(2014, 02, 15);
-		
-		Autor everton = new Autor("Everton Coimbra de Araújo");
-		Livro livroUm = new Livro("ASP.NET MVC5", "Crie aplicações Web na plataforma Microsoft", everton, Tipo.EBOOK, 30,
-				dataUltimaAtualizacao, dataLancamento);
-		
 		Item item = new Item(livroUm, 2);
 		
 		assertEquals(60, item.getPrecoTotal(), 0.00001);
