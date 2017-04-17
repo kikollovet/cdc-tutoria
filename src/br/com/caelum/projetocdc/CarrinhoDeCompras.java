@@ -1,6 +1,7 @@
 package br.com.caelum.projetocdc;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ public class CarrinhoDeCompras {
 	private Set<Item> itens = new HashSet<>();
 	
 	public Set<Item> getItens() {
-		return itens;
+		return Collections.unmodifiableSet(this.itens);
 	}
 	
 	public void adiciona(Item item){

@@ -122,4 +122,9 @@ public class SiteTest {
 		assertTrue(site.listaDestaques().contains(l3));
 		assertTrue(site.listaDestaques().contains(l4));
 	}
+	
+	@Test(expected = UnsupportedOperationException.class)
+	public void naoAdicionaLivroUsandoOMetodoGetAdd(){
+		site.getLivros().add(l1);
+	}
 }

@@ -13,7 +13,7 @@ public class Site {
 	private Set<Livro> livros = new HashSet<>();
 
 	public Set<Livro> getLivros() {
-		return livros;
+		return Collections.unmodifiableSet(this.livros);
 	}
 
 	public void inclui(Livro livro) {

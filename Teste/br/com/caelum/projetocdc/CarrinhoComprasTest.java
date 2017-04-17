@@ -92,4 +92,8 @@ public class CarrinhoComprasTest {
 		
 		assertEquals(1, carrinhoDeCompras.getItens().size());
 	}
+	@Test(expected = UnsupportedOperationException.class)
+	public void naoAdicionaItemMétodoGetAdd() {
+		carrinhoDeCompras.getItens().add(itemUm);
+	}
 }
