@@ -26,4 +26,9 @@ public class ItemNoEstoque {
 	public int getQuantidadeNoEstoque() {
 		return quantidadeNoEstoque;
 	}
+	
+	@Override
+	public String toString() {
+		return "Id: " + this.id + "\nLivro: " + this.livro + "\nQuantidade: " + this.quantidadeNoEstoque;
+	}
 }

@@ -28,6 +28,7 @@ public class TesteEstoqueBDDao {
 		EstoqueBDDao eDao = new EstoqueBDDao(connection);
 		//eDao.adiciona(ine);
 		//eDao.diminuiQuantidade(ine, 3);
-		eDao.aumentaQuantidade(ine, 4);
+		//eDao.aumentaQuantidade(ine, 4);
+		System.out.println(eDao.getItemNoEstoque(2));
 	}
 }
