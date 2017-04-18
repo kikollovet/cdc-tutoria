@@ -2,9 +2,12 @@ package br.com.caelum.projetocdc;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import br.com.caelum.projetocdc.exception.QuantidadeInsuficienteNoEstoqueException;
 
 public class Compra {
 
@@ -35,11 +38,11 @@ public class Compra {
 	}
 
 	public Set<Item> getItens() {
-		return itens;
+		return Collections.unmodifiableSet(this.itens);
 	}
 	
 	public void adicionaItens(Item item) {
-		this.itens.add(item);
+			this.itens.add(item);
 	}
 	
 	public String getDataCompraString(){
