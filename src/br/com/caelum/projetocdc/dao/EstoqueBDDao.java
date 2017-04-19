@@ -10,6 +10,7 @@ import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.ItemNoEstoque;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
+import br.com.caelum.projetocdc.exception.NaoPodeAdicionarEbookNoEstoqueException;
 
 public class EstoqueBDDao {
 
@@ -19,7 +20,7 @@ public class EstoqueBDDao {
 		this.connection = connection;
 	}
 	
-	public void adiciona(ItemNoEstoque itemNoEstoque){
+	public void adiciona(ItemNoEstoque itemNoEstoque) throws NaoPodeAdicionarEbookNoEstoqueException{
 		try{
 			String sql = "insert into estoque (id_livro, quantidade) values (?,?);";
 			
@@ -59,7 +60,7 @@ public class EstoqueBDDao {
 		}
 	}
 	
-	public ItemNoEstoque getItemNoEstoque(int id){
+	public ItemNoEstoque getItemNoEstoque(int id) throws NaoPodeAdicionarEbookNoEstoqueException{
 		try{
 			ItemNoEstoque itemNoEstoque = null;
 			

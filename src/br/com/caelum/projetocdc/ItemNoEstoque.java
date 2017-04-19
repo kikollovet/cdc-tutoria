@@ -1,12 +1,17 @@
 package br.com.caelum.projetocdc;
 
+import br.com.caelum.projetocdc.exception.NaoPodeAdicionarEbookNoEstoqueException;
+
 public class ItemNoEstoque {
 
 	private int id;
 	private Livro livro;
 	private int quantidadeNoEstoque;
 	
-	public ItemNoEstoque(Livro livro, int quantidadeNoEstoque) {
+	public ItemNoEstoque(Livro livro, int quantidadeNoEstoque) throws NaoPodeAdicionarEbookNoEstoqueException {
+		if(livro.getTipo().name().equals("EBOOK")){
+			throw new NaoPodeAdicionarEbookNoEstoqueException("Ebook não entra no estoque");
+		}
 		this.livro = livro;
 		this.quantidadeNoEstoque = quantidadeNoEstoque;
 	}
