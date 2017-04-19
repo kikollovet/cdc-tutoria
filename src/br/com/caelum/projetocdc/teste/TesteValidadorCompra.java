@@ -31,11 +31,12 @@ public class TesteValidadorCompra {
 		ItemNoEstoque ine = eDao.getItemNoEstoqueIdLivro(3);
 		
 		Compra compra = new Compra(usuario, Calendar.getInstance());
-		Item item = new Item(descAWeb, 5);
+		Item item = new Item(descAWeb, 4);
 		compra.adicionaItens(item);
 		
 		ValidadorCompra vC = new ValidadorCompra();
-		vC.ValidaCompra(compra, ine);
+		//vC.validaCompra(compra, ine);
+		vC.validaCompraDois(compra, connection);
 		
 	}
 }
