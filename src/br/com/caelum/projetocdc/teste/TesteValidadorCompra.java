@@ -1,6 +1,7 @@
 package br.com.caelum.projetocdc.teste;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 import br.com.caelum.projetocdc.Compra;
@@ -16,7 +17,7 @@ import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class TesteValidadorCompra {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		Connection connection = new ConnectionFactory().getConnection();
 		
 		UsuarioBDDao uDao = new UsuarioBDDao(connection);
@@ -31,12 +32,12 @@ public class TesteValidadorCompra {
 		ItemNoEstoque ine = eDao.getItemNoEstoqueIdLivro(3);
 		
 		Compra compra = new Compra(usuario, Calendar.getInstance());
-		Item item = new Item(descAWeb, 4);
+		Item item = new Item(descAWeb, 5);
 		compra.adicionaItens(item);
 		
-		ValidadorCompra vC = new ValidadorCompra();
+		ValidadorCompra vC = new ValidadorCompra(connection);
 		//vC.validaCompra(compra, ine);
-		vC.validaCompraDois(compra, connection);
+		//vC.validaCompraDois(compra);
 		
 	}
 }

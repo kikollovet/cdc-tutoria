@@ -15,7 +15,7 @@ import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class TesteCompraBDDao {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 		Connection connection = new ConnectionFactory().getConnection();
 		

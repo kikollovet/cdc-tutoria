@@ -1,13 +1,21 @@
 package br.com.caelum.projetocdc;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.projetocdc.dao.EstoqueBDDao;
 import br.com.caelum.projetocdc.exception.QuantidadeInsuficienteNoEstoqueException;
+import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 
 public class ValidadorCompra {
+	
+	private Connection connection;
+	
+	public ValidadorCompra(Connection connection){
+		this.connection = connection;
+	}
 
 	public void validaCompra(Compra compra, ItemNoEstoque itemNoEstoque) {
 		for (Item item : compra.getItens()) {
@@ -32,8 +40,8 @@ public class ValidadorCompra {
 		return lista;
 	}
 	
-	public void validaCompraDois(Compra compra, Connection connection){
-		List<ItemNoEstoque> lista = geraUmaListaDeItensNoEstoqueAPartirDaCompra(compra, connection);
+	public void validaCompraDois(Compra compra){
+		List<ItemNoEstoque> lista = geraUmaListaDeItensNoEstoqueAPartirDaCompra(compra, this.connection);
 		for(Item item : compra.getItens()){
 			for(ItemNoEstoque itemNoEstoque : lista){
 				if(item.getLivro().equals(itemNoEstoque.getLivro())){
@@ -46,5 +54,19 @@ public class ValidadorCompra {
 				}
 			}
 		}
+	}
+	
+	public static void validaItem(Item item) throws SQLException{
+		EstoqueBDDao eDao = new EstoqueBDDao(new ConnectionFactory().getConnection());
+		ItemNoEstoque ine = eDao.getItemNoEstoqueIdLivro(item.getLivro().getId());
+		if(item.getLivro().equals(ine.getLivro())){
+			if(item.getLivro().getTipo().equals(Tipo.IMPRESSO)){
+				if(ine.getQuantidadeNoEstoque() < item.getQuantidade()){
+					throw new QuantidadeInsuficienteNoEstoqueException("Não tem quantidade suficiente deste livro no estoque, "
+							+ "só temos " + ine.getQuantidadeNoEstoque());
+				}
+			}
+		}
+		eDao.fechaConexao();
 	}
 }

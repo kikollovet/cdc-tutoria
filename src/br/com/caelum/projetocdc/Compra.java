@@ -1,5 +1,6 @@
 package br.com.caelum.projetocdc;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
@@ -41,8 +42,9 @@ public class Compra {
 		return Collections.unmodifiableSet(this.itens);
 	}
 	
-	public void adicionaItens(Item item) {
-			this.itens.add(item);
+	public void adicionaItens(Item item) throws SQLException {
+		ValidadorCompra.validaItem(item);	
+		this.itens.add(item);
 	}
 	
 	public String getDataCompraString(){

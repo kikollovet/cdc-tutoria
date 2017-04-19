@@ -151,4 +151,8 @@ public class EstoqueBDDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void fechaConexao() throws SQLException{
+		this.connection.close();
+	}
 }
