@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Calendar;
 
+import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Compra;
+import br.com.caelum.projetocdc.GeradoraDeCompra;
 import br.com.caelum.projetocdc.Item;
 import br.com.caelum.projetocdc.ItemNoEstoque;
 import br.com.caelum.projetocdc.Livro;
@@ -27,13 +29,19 @@ public class TesteValidadorCompra {
 		Livro guiaStartup = lDao.getLivro(2);
 		Livro descAWeb = lDao.getLivro(3);
 		
-		EstoqueBDDao eDao = new EstoqueBDDao(connection);
+		EstoqueBDDao estoqueDao = new EstoqueBDDao(connection);
 				
-		ItemNoEstoque ine = eDao.getItemNoEstoqueIdLivro(3);
+		ItemNoEstoque ine = estoqueDao.getItemNoEstoqueIdLivro(3);
 		
 		Compra compra = new Compra(usuario, Calendar.getInstance());
 		Item item = new Item(descAWeb, 5);
 		compra.adicionaItens(item);
+		
+		CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+		carrinho.adiciona(item);
+		
+		GeradoraDeCompra geradoraDeCompra = new GeradoraDeCompra(estoqueDao);
+		Compra compraDois = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinho);
 		
 		ValidadorCompra vC = new ValidadorCompra(connection);
 		//vC.validaCompra(compra, ine);

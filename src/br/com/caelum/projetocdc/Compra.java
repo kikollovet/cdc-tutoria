@@ -21,6 +21,15 @@ public class Compra {
 		this.usuario = usuario;
 		this.data = data;
 	}
+	
+	public Compra(Usuario usuario, Calendar data, CarrinhoDeCompras carrinhoDeCompras){
+		this.usuario = usuario;
+		this.data = data;
+		for(Item item : carrinhoDeCompras.getItens()){
+			this.itens.add(item);
+		}
+		
+	}
 
 	public int getId() {
 		return id;
@@ -42,8 +51,7 @@ public class Compra {
 		return Collections.unmodifiableSet(this.itens);
 	}
 	
-	public void adicionaItens(Item item) throws SQLException {
-		ValidadorCompra.validaItem(item);	
+	public void adicionaItens(Item item) {
 		this.itens.add(item);
 	}
 	
