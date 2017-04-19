@@ -9,8 +9,8 @@ public class ItemNoEstoque {
 	private int quantidadeNoEstoque;
 	
 	public ItemNoEstoque(Livro livro, int quantidadeNoEstoque) throws NaoPodeAdicionarEbookNoEstoqueException {
-		if(livro.getTipo().name().equals("EBOOK")){
-			throw new NaoPodeAdicionarEbookNoEstoqueException("Ebook não entra no estoque");
+		if(livro.getTipo().equals(Tipo.EBOOK)){
+			throw new NaoPodeAdicionarEbookNoEstoqueException("Não pode criar ItemNoEstoque com ebook");
 		}
 		this.livro = livro;
 		this.quantidadeNoEstoque = quantidadeNoEstoque;

@@ -1,6 +1,6 @@
 package br.com.caelum.projetocdc.exception;
 
-public class QuantidadeInsuficienteNoEstoqueException extends Exception {
+public class QuantidadeInsuficienteNoEstoqueException extends RuntimeException {
 
 	public QuantidadeInsuficienteNoEstoqueException() {
 	}

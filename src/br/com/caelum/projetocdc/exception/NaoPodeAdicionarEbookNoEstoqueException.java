@@ -1,6 +1,6 @@
 package br.com.caelum.projetocdc.exception;
 
-public class NaoPodeAdicionarEbookNoEstoqueException extends Exception {
+public class NaoPodeAdicionarEbookNoEstoqueException extends RuntimeException {
 
 	public NaoPodeAdicionarEbookNoEstoqueException() {
 	}
