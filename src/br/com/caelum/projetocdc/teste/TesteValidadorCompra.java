@@ -11,7 +11,6 @@ import br.com.caelum.projetocdc.Item;
 import br.com.caelum.projetocdc.ItemNoEstoque;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Usuario;
-import br.com.caelum.projetocdc.ValidadorCompra;
 import br.com.caelum.projetocdc.dao.EstoqueBDDao;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.dao.UsuarioBDDao;
@@ -43,9 +42,9 @@ public class TesteValidadorCompra {
 		GeradoraDeCompra geradoraDeCompra = new GeradoraDeCompra(estoqueDao);
 		Compra compraDois = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinho);
 		
-		ValidadorCompra vC = new ValidadorCompra(connection);
-		//vC.validaCompra(compra, ine);
-		//vC.validaCompraDois(compra);
+		
+		
+		
 		
 	}
 }
