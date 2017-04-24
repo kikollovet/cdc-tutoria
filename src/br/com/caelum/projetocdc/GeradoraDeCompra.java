@@ -7,23 +7,18 @@ import br.com.caelum.projetocdc.exception.QuantidadeInsuficienteNoEstoqueExcepti
 
 public class GeradoraDeCompra {
 
-	private EstoqueBDDao estoqueDao;
+	private VerificadorDeEstoque verificador;
 
-	public GeradoraDeCompra(EstoqueBDDao estoqueDao) {
-		this.estoqueDao = estoqueDao;
+	public GeradoraDeCompra(VerificadorDeEstoque verificador) {
+		this.verificador = verificador;
 	}
 
 	public Compra novaCompra(Usuario usuario, Calendar data, CarrinhoDeCompras carrinho) {
 		Compra compra = new Compra(usuario, data);
-		for(Item item : carrinho.getItens()){
-			if(item.getLivro().equals(estoqueDao.getItemNoEstoqueIdLivro(item.getLivro().getId()).getLivro())){
-				if(item.getLivro().getTipo().equals(Tipo.IMPRESSO)){
-					ItemNoEstoque itemNoEstoque = estoqueDao.getItemNoEstoqueIdLivro(item.getLivro().getId());
-					if(itemNoEstoque.getQuantidadeNoEstoque() < item.getQuantidade()){
-						throw new QuantidadeInsuficienteNoEstoqueException("Não temos essa quantidade de livros"
-								+ " disponível no estoque. Temos " + itemNoEstoque.getQuantidadeNoEstoque());
-					}
-				}
+		
+		for(Item item: carrinho.getItens()){
+			if(verificador.verificaTemNoEstoque(item)){
+				compra.adicionaItens(item);
 			}
 		}
 		return compra;
