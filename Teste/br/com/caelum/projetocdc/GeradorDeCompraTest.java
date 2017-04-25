@@ -46,7 +46,7 @@ public class GeradorDeCompraTest {
 		this.carrinhoDeCompras = new CarrinhoDeCompras();
 		//carrinho.adiciona(item);
 		
-		this.verificadorDeEstoque = new VerificadorDeEstoqueMock(estoqueDao);
+		this.verificadorDeEstoque = new VerificadorDeEstoqueMock(estoqueDao,6);
 		
 		this.geradoraDeCompra = new GeradoraDeCompra(verificadorDeEstoque);
 		//Compra compraDois = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinho);
@@ -72,7 +72,7 @@ public class GeradorDeCompraTest {
 	
 	@Test(expected = QuantidadeInsuficienteNoEstoqueException.class)
 	public void quantidadeInsuficienteNoEstoque(){
-		Item item = new Item(java, 5);
+		Item item = new Item(descAWeb, 7);
 		carrinhoDeCompras.adiciona(item);
 		geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 				

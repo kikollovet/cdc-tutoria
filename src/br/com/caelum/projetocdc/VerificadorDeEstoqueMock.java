@@ -5,19 +5,20 @@ import br.com.caelum.projetocdc.exception.QuantidadeInsuficienteNoEstoqueExcepti
 
 public class VerificadorDeEstoqueMock extends VerificadorDeEstoque {
 
-	public VerificadorDeEstoqueMock(EstoqueBDDao estoqueBDdao) {
+	private int quantidade;
+	
+	public VerificadorDeEstoqueMock(EstoqueBDDao estoqueBDdao, int quantidade) {
 		super(estoqueBDdao);
+		this.quantidade = quantidade;
 	}
 
 	@Override
 	public boolean verificaTemNoEstoque(Item item){
 		if(item.getLivro().getTipo().equals(Tipo.EBOOK)){
 			return true;
-		}
-		if(item.getQuantidade() <= 4){
+		} else if(item.getQuantidade() <= this.quantidade){
 			return true;
-		}
-		if(item.getQuantidade() > 4){
+		}else if(item.getQuantidade() > this.quantidade){
 			throw new QuantidadeInsuficienteNoEstoqueException();
 		}
 		return true;
