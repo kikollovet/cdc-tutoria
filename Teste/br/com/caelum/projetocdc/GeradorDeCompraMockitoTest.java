@@ -1,3 +1,4 @@
+package br.com.caelum.projetocdc;
 import static org.junit.Assert.assertEquals;
 
 import java.sql.Connection;
@@ -64,37 +65,25 @@ public class GeradorDeCompraMockitoTest {
 		this.carrinhoDeCompras = new CarrinhoDeCompras();
 	}
 	
-	@Test
-	public void qualquerQuantidadeDeEbookEhPermitidaNumaCompra(){
-		GeradoraDeCompra geradora = new GeradoraDeCompra(verificadorDeEstoqueMock);
+	//@Test
+	//public void qualquerQuantidadeDeEbookEhPermitidaNumaCompra(){
+		//GeradoraDeCompra geradora = new GeradoraDeCompra(verificadorDeEstoqueMock);
 		
-		Item item = new Item(guiaStartup, 50);
-		carrinhoDeCompras.adiciona(item);
-		Mockito.when(verificadorDeEstoqueMock.verificaTemNoEstoque(item)).thenReturn(true);
-		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
+		//Item item = new Item(guiaStartup, 50);
+		//carrinhoDeCompras.adiciona(item);
+		//Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 		
-		assertEquals(1, compra.getItens().size());
-	}
+	//	assertEquals(1, compra.getItens().size());
+	//}
 	
-	@Test
-	public void quantidadeInsuficienteDeUmLivroNoEstoqueEhAdicionadoACompra(){
-		Item item = new Item(descAWeb, 7);
-		carrinhoDeCompras.adiciona(item);
-		Mockito.when(verificadorDeEstoqueMock.verificaTemNoEstoque(item)).thenReturn(false);
-		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
+	//@Test
+	//public void quantidadeSuficienteDeUmLivroNoEstoqueEhAdicionadoACompra(){
+		//Item item = new Item(descAWeb, 3);
+		//carrinhoDeCompras.adiciona(item);
+		//Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 		
-		assertEquals(0, compra.getItens().size());
-	}
-	
-	@Test
-	public void quantidadeSuficienteDeUmLivroNoEstoqueEhAdicionadoACompra(){
-		Item item = new Item(descAWeb, 3);
-		carrinhoDeCompras.adiciona(item);
-		Mockito.when(verificadorDeEstoqueMock.verificaTemNoEstoque(item)).thenReturn(true);
-		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
-		
-		assertEquals(1, compra.getItens().size());
-	}
+		//assertEquals(1, compra.getItens().size());
+	//}
 	
 	@Test(expected = QuantidadeInsuficienteNoEstoqueException.class)
 	public void quantidadeInsuficienteNoEstoque(){
