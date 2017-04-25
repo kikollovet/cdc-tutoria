@@ -102,7 +102,7 @@ public class GeradorDeCompraMockitoTest {
 		carrinhoDeCompras.adiciona(item);
 		Mockito.when(verificadorDeEstoqueMock.verificaTemNoEstoque(item)).thenThrow(new QuantidadeInsuficienteNoEstoqueException());
 		
-		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
+		geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 	}
 
 }
