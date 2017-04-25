@@ -12,9 +12,9 @@ public class VerificadorDeEstoque {
 	}
 
 	public boolean verificaTemNoEstoque(Item item) {
-		if (isImpresso(item) && temNoEstoque(item)) {
+		if (isImpresso(item) && temRegistroNoEstoque(item)) {
 			ItemNoEstoque itemNoEstoque = estoqueBDdao.getItemNoEstoqueIdLivro(item.getLivro().getId());
-			if (isQuantidadeDisponivel(item, itemNoEstoque)) {
+			if (isQuantidadeNaoDisponivel(item, itemNoEstoque)) {
 				throw new QuantidadeInsuficienteNoEstoqueException("Não temos essa quantidade de livros"
 						+ " disponível no estoque. Temos " + itemNoEstoque.getQuantidadeNoEstoque());
 			}
@@ -22,11 +22,11 @@ public class VerificadorDeEstoque {
 		return true;
 	}
 
-	private boolean isQuantidadeDisponivel(Item item, ItemNoEstoque itemNoEstoque) {
+	private boolean isQuantidadeNaoDisponivel(Item item, ItemNoEstoque itemNoEstoque) {
 		return itemNoEstoque.getQuantidadeNoEstoque() < item.getQuantidade();
 	}
 
-	private boolean temNoEstoque(Item item) {
+	private boolean temRegistroNoEstoque(Item item) {
 		return item.getLivro().equals(estoqueBDdao.getItemNoEstoqueIdLivro(item.getLivro().getId()).getLivro());
 	}
 

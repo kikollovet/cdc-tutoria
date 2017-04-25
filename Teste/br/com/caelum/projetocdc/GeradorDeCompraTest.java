@@ -46,7 +46,7 @@ public class GeradorDeCompraTest {
 		this.carrinhoDeCompras = new CarrinhoDeCompras();
 		//carrinho.adiciona(item);
 		
-		this.verificadorDeEstoque = new VerificadorDeEstoque(estoqueDao);
+		this.verificadorDeEstoque = new VerificadorDeEstoqueMock(estoqueDao);
 		
 		this.geradoraDeCompra = new GeradoraDeCompra(verificadorDeEstoque);
 		//Compra compraDois = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinho);
