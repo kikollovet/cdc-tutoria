@@ -77,7 +77,7 @@ public class GeradorDeCompraMockitoTest {
 	}
 	
 	@Test
-	public void quantidadeInsuficienteDeUmLivroNoEstoqueEhAdicionadoACompra(){
+	public void quantidadeInsuficienteDeUmLivroNoEstoqueNaoEhAdicionadoACompra(){
 		Item item = new Item(descAWeb, 7);
 		carrinhoDeCompras.adiciona(item);
 		Mockito.when(verificadorDeEstoqueMock.verificaTemNoEstoque(item)).thenReturn(false);
