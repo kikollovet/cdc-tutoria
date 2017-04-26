@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.util.Calendar;
@@ -66,7 +66,6 @@ public class GeradorDeCompraMockitoTest {
 	
 	@Test
 	public void qualquerQuantidadeDeEbookEhPermitidaNumaCompra(){
-		GeradoraDeCompra geradora = new GeradoraDeCompra(verificadorDeEstoqueMock);
 		
 		Item item = new Item(guiaStartup, 50);
 		carrinhoDeCompras.adiciona(item);
@@ -74,6 +73,7 @@ public class GeradorDeCompraMockitoTest {
 		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 		
 		assertEquals(1, compra.getItens().size());
+		assertTrue(compra.getItens().contains(item));
 	}
 	
 	@Test
@@ -84,6 +84,7 @@ public class GeradorDeCompraMockitoTest {
 		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 		
 		assertEquals(0, compra.getItens().size());
+		assertFalse(compra.getItens().contains(item));
 	}
 	
 	@Test
@@ -94,6 +95,7 @@ public class GeradorDeCompraMockitoTest {
 		Compra compra = geradoraDeCompra.novaCompra(usuario, Calendar.getInstance(), carrinhoDeCompras);
 		
 		assertEquals(1, compra.getItens().size());
+		assertTrue(compra.getItens().contains(item));
 	}
 	
 	@Test(expected = QuantidadeInsuficienteNoEstoqueException.class)
