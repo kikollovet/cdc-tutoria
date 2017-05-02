@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
@@ -11,9 +14,34 @@ import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
 public class AutorBDDao implements AutorDAO{
 
 	private Connection connection;
+	private EntityManager manager;
 	
 	public AutorBDDao(Connection connection){
 		this.connection = connection;
+	}
+	
+	public AutorBDDao(EntityManager manager){
+		this.manager = manager;
+	}
+	
+	public void add(Autor autor){
+		manager.getTransaction().begin();
+		manager.persist(autor);
+		manager.getTransaction().commit();
+	}
+	
+	public Autor getAutorId(int id){
+		return manager.find(Autor.class, id);
+	}
+	
+	public void removeAutor(Autor autor){
+		manager.getTransaction().begin();
+		manager.remove(autor);
+		manager.getTransaction().commit();
+	}
+	
+	public List<Autor> getLista(){
+		return manager.createQuery("select * from autores").getResultList();
 	}
 	
 	public void adiciona(Autor autor){
