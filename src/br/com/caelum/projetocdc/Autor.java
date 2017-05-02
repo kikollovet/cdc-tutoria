@@ -1,9 +1,20 @@
 package br.com.caelum.projetocdc;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="autores")
 public class Autor {
 
-	private String nome;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	private String nome;
 	
 	public Autor (String nome){
 		this.nome = nome;
