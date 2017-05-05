@@ -5,17 +5,54 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="livros")
 public class Livro {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name = "titulo")
 	private String titulo;
+	
+	@Column(name = "subtitulo")
 	private String subTitulo;
+	
+	@ManyToOne
+	@JoinColumn(name = "autor")
 	private Autor autor;
+	
+	@Column(name = "dataultimaatualizacao")
+	@Temporal(TemporalType.DATE)
 	private Calendar dataUltimaAtualizacao;
+	
+	@Column(name = "datalancamento")
+	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento;
+	
+	@Column(name = "preco")
 	private double preco;
+	
+	@Column(name = "tipo")
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 
+	public Livro(){}
+	
 	public Livro(String titulo, String subTitulo, Autor autor, Tipo tipo, double preco) {
 		this.titulo = titulo;
 		this.subTitulo = subTitulo;

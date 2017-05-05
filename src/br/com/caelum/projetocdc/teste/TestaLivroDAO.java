@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Calendar;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
@@ -17,7 +21,11 @@ public class TestaLivroDAO {
 
 		Connection connection = new ConnectionFactory().getConnection();
 		
-		AutorBDDao daoAutor = new AutorBDDao(connection);
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("cdc");
+		
+		EntityManager manager = factory.createEntityManager();
+		
+		AutorBDDao daoAutor = new AutorBDDao(manager);
 		Autor willian = daoAutor.getAutor(6);
 		
 		
@@ -28,7 +36,7 @@ public class TestaLivroDAO {
 		dataLancamento.set(2014, 02, 15);
 		
 		
-		Livro livro = new Livro("Desconstruindo a Web", "As tecnologias por tráz de uma requisição", 
+		Livro livro = new Livro("Desconstruindo a Web", "As tecnologias por trï¿½z de uma requisiï¿½ï¿½o", 
 				willian, Tipo.IMPRESSO, 59.90, dataUltimaAtualizacao, dataLancamento);
 		//livro.setId(1);
 		
