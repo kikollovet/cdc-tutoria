@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.caelum.projetocdc.exception.NaoPodeAdicionarEbookNoEstoqueException;
@@ -18,6 +19,7 @@ public class ItemNoEstoque {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@ManyToOne
 	@JoinColumn(name = "id_livro")
 	private Livro livro;
 	

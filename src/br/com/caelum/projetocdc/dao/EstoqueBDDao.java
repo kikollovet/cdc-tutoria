@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.ItemNoEstoque;
@@ -46,49 +48,10 @@ public class EstoqueBDDao {
 	}
 	
 	public ItemNoEstoque getItemNoEstoqueIdLivro(int id) throws NaoPodeAdicionarEbookNoEstoqueException{
-		try{
-			ItemNoEstoque itemNoEstoque = null;
-			
-			String sql = "select * from estoque e join livros l on e.id_livro = l.id join autores a on l.autor = a.id where e.id_livro = ?;";
-			PreparedStatement stmt = this.connection.prepareStatement(sql);
-			stmt.setInt(1, id);
-			
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()){
-				int idItem = rs.getInt("e.id");
-				int quantidade = rs.getInt("e.quantidade");
-				int idLivro = rs.getInt("e.id_livro");
-				
-				String titulo = rs.getString("l.titulo");
-				String subTitulo = rs.getString("l.subtitulo");
-				
-				Calendar dataUltimaAtualizacao = Calendar.getInstance();
-				dataUltimaAtualizacao.setTime(rs.getDate("l.dataultimaatualizacao"));
-				
-				Calendar dataLancamento = Calendar.getInstance();
-				dataLancamento.setTime(rs.getDate("l.datalancamento"));
-				
-				double preco = rs.getDouble("l.preco");
-				String tipo = rs.getString("l.tipo");
-				
-				String nomeAutor = rs.getString("a.nome");
-				int idAutor = rs.getInt("l.autor");
-				
-				
-				Autor autor = new Autor(nomeAutor);
-				autor.setId(idAutor);
-				
-				Livro livro = new Livro(titulo, subTitulo, 
-						autor, Tipo.valueOf(tipo), preco, dataUltimaAtualizacao, dataLancamento);
-				livro.setId(idLivro);
-				
-				itemNoEstoque = new ItemNoEstoque(livro, quantidade);
-				itemNoEstoque.setId(id);
-			}
-			return itemNoEstoque;
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+		Query query = manager.createQuery("from estoque as e where e.id_livro = ?");
+		query.setParameter(1, id);
+		List<ItemNoEstoque> lista = query.getResultList();
+		return lista.get(0);
 	}
 	
 	public void fechaConexao() throws SQLException{
