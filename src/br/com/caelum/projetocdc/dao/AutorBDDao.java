@@ -20,9 +20,7 @@ public class AutorBDDao implements AutorDAO{
 	}
 	
 	public void adiciona(Autor autor){
-		manager.getTransaction().begin();
 		manager.persist(autor);
-		manager.getTransaction().commit();
 	}
 	
 	public Autor getAutor(int id){
@@ -30,9 +28,7 @@ public class AutorBDDao implements AutorDAO{
 	}
 	
 	public void remove(Autor autor){
-		manager.getTransaction().begin();
 		manager.remove(autor);
-		manager.getTransaction().commit();
 	}
 	
 	public void altera(Autor autor){

@@ -28,15 +28,11 @@ public class LivroBDDao {
 	}
 
 	public void adiciona(Livro livro){
-		manager.getTransaction().begin();
 		manager.persist(livro);
-		manager.getTransaction().commit();
 	}
 	
 	public void altera(Livro livro){
-		manager.getTransaction().begin();
 		manager.merge(livro);
-		manager.getTransaction().commit();
 	}
 	
 	public Livro getLivro(int id){
@@ -44,8 +40,6 @@ public class LivroBDDao {
 	}
 	
 	public void remove(Livro livro){
-	manager.getTransaction().begin();
 	manager.remove(livro);
-	manager.getTransaction().commit();
 	}		
 }

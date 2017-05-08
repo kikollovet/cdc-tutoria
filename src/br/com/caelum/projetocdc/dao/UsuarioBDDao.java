@@ -24,9 +24,7 @@ public class UsuarioBDDao {
 	}
 	
 	public void adiciona(Usuario usuario){
-		manager.getTransaction().begin();
 		manager.persist(usuario);
-		manager.getTransaction().commit();
 	}
 	
 	public void altera(Usuario usuario) {
@@ -37,8 +35,6 @@ public class UsuarioBDDao {
 	}
 	
 	public void remove(Usuario usuario){
-		manager.getTransaction().begin();
 		manager.remove(usuario);
-		manager.getTransaction().commit();
 	}
 }

@@ -83,29 +83,57 @@ public class Livro {
 	public String getTitulo() {
 		return titulo;
 	}
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
 	public String getSubTitulo() {
 		return subTitulo;
+	}
+	
+	public void setSubTitulo(String subTitulo) {
+		this.subTitulo = subTitulo;
 	}
 
 	public Autor getAutor() {
 		return autor;
 	}
+	
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
 
 	public double getPreco() {
 		return preco;
+	}
+	
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 	public Tipo getTipo() {
 		return tipo;
 	}
+	
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 
 	public Calendar getDataUltimaAtualizacao() {
 		return dataUltimaAtualizacao;
 	}
+	
+	public void setDataUltimaAtualizacao(Calendar dataUltimaAtualizacao) {
+		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+	}
 
 	public Calendar getDataLancamento() {
 		return dataLancamento;
+	}
+	
+	public void setDataLancamento(Calendar dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 
 	public String getDataUltimaAtualizacaoString() {

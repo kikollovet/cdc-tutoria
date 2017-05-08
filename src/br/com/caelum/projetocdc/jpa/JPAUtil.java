@@ -11,10 +11,11 @@ public class JPAUtil {
 	
 	public JPAUtil(){
 		this.factory = Persistence.createEntityManagerFactory("cdc");
+		this.manager = factory.createEntityManager();
 	}
 	
 	public EntityManager getEntityManager(){
-		return this.manager = factory.createEntityManager(); 
+		return this.manager; 
 	}
 	
 	public void iniciaTransacao(){
@@ -26,7 +27,7 @@ public class JPAUtil {
 	}
 	
 	public void fechaConexao(){
-		this.factory.close();
 		this.manager.close();
+		this.factory.close();
 	}
 }

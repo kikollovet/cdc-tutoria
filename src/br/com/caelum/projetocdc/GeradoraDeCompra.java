@@ -18,6 +18,7 @@ public class GeradoraDeCompra {
 		
 		for(Item item: carrinho.getItens()){
 			if(verificador.verificaTemNoEstoque(item)){
+				item.setCompra(compra);
 				compra.adicionaItens(item);
 			}
 		}

@@ -1,21 +1,77 @@
 package br.com.caelum.projetocdc;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="itens")
 public class Item {
 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="id_compra")
+	private Compra compra;
+	
+	@ManyToOne
+	@JoinColumn(name="id_livro")
 	private Livro livro;
+	
+	@Column(name = "quantidade")
 	private int quantidade;
+	
+	@Column(name = "preco")
 	private double precoUnitario;
-	private double precoTotal;
+	private transient double precoTotal;
 
+	public Item(){}
+	
 	public Item(Livro livro, int quantidade) {
 		this.livro = livro;
 		this.quantidade = quantidade;
 		this.precoUnitario = livro.getPreco();
 		this.precoTotal = livro.getPreco() * quantidade;
 	}
+	
+	public Item(Compra compra, Livro livro, int quantidade) {
+		this.compra = compra;
+		this.livro = livro;
+		this.quantidade = quantidade;
+		this.precoUnitario = livro.getPreco();
+		this.precoTotal = livro.getPreco() * quantidade;
+	}
 
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public Compra getCompra() {
+		return compra;
+	}
+	
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
+	
 	public Livro getLivro() {
 		return livro;
+	}
+	
+	public void setLivro(Livro livro) {
+		this.livro = livro;
 	}
 
 	public int getQuantidade() {
