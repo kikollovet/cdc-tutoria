@@ -48,8 +48,8 @@ public class EstoqueBDDao {
 	}
 	
 	public ItemNoEstoque getItemNoEstoqueIdLivro(int id) throws NaoPodeAdicionarEbookNoEstoqueException{
-		Query query = manager.createQuery("from estoque as e where e.id_livro = ?");
-		query.setParameter(1, id);
+		Query query = manager.createQuery("select e from ItemNoEstoque e where e.livro.id = :id");
+		query.setParameter("id", id);
 		List<ItemNoEstoque> lista = query.getResultList();
 		return lista.get(0);
 	}
