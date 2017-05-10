@@ -10,6 +10,7 @@ import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.dao.UsuarioBDDao;
 import br.com.caelum.projetocdc.exception.NaoPodeAdicionarEbookNoEstoqueException;
 import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
+import br.com.caelum.projetocdc.jpa.JPAUtil;
 
 public class TesteEstoqueBDDao {
 
@@ -26,7 +27,9 @@ public class TesteEstoqueBDDao {
 		ItemNoEstoque ine = new ItemNoEstoque(guiaStartup, 3);
 		//ine.setId(2);
 		
-		EstoqueBDDao eDao = new EstoqueBDDao(connection);
+		JPAUtil jpa = new JPAUtil();
+		
+		EstoqueBDDao eDao = new EstoqueBDDao(jpa.getEntityManager());
 		//eDao.adiciona(ine);
 		//eDao.diminuiQuantidade(ine, 3);
 		//eDao.aumentaQuantidade(ine, 4);

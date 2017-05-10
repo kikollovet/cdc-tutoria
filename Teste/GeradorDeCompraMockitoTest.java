@@ -59,7 +59,7 @@ public class GeradorDeCompraMockitoTest {
 		this.java = new Livro("Java", "Mais e mais", new Autor("Luis"), Tipo.IMPRESSO, 20.00);
 		java.setId(2);
 		
-		this.estoqueDao = new EstoqueBDDao(connection);
+		//this.estoqueDao = new EstoqueBDDao(connection);
 				
 		this.carrinhoDeCompras = new CarrinhoDeCompras();
 	}

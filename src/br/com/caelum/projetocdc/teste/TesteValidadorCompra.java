@@ -16,6 +16,7 @@ import br.com.caelum.projetocdc.dao.EstoqueBDDao;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.dao.UsuarioBDDao;
 import br.com.caelum.projetocdc.jdbc.ConnectionFactory;
+import br.com.caelum.projetocdc.jpa.JPAUtil;
 
 public class TesteValidadorCompra {
 
@@ -29,7 +30,9 @@ public class TesteValidadorCompra {
 		Livro guiaStartup = lDao.getLivro(2);
 		Livro descAWeb = lDao.getLivro(3);
 		
-		EstoqueBDDao estoqueDao = new EstoqueBDDao(connection);
+		JPAUtil jpa = new JPAUtil();
+		
+		EstoqueBDDao estoqueDao = new EstoqueBDDao(jpa.getEntityManager());
 				
 		ItemNoEstoque ine = estoqueDao.getItemNoEstoqueIdLivro(3);
 		

@@ -18,12 +18,7 @@ import br.com.caelum.projetocdc.exception.NaoPodeAdicionarEbookNoEstoqueExceptio
 
 public class EstoqueBDDao {
 
-	Connection connection;
 	EntityManager manager;
-	
-	public EstoqueBDDao(Connection connection){
-		this.connection = connection;
-	}
 	
 	public EstoqueBDDao(EntityManager manager){
 		this.manager = manager;
@@ -54,7 +49,4 @@ public class EstoqueBDDao {
 		return lista.get(0);
 	}
 	
-	public void fechaConexao() throws SQLException{
-		this.connection.close();
-	}
 }
