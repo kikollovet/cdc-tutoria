@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -41,5 +42,9 @@ public class LivroBDDao {
 	
 	public void remove(Livro livro){
 	manager.remove(livro);
-	}		
+	}	
+	
+	public List<Livro> getLista(){
+		return manager.createQuery("select l from Livro l").getResultList();
+	}
 }

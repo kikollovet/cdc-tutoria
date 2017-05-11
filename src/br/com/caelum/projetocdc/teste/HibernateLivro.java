@@ -27,7 +27,7 @@ public class HibernateLivro {
 		Livro livro = new Livro("Livro Teste", "Será?", autor, Tipo.IMPRESSO, 45.50, calendar, calendar);
 		
 		manager.getTransaction().begin();
-		manager.persist(livro);
+		//manager.persist(livro);
 		manager.getTransaction().commit();
 		
 		manager.close();
