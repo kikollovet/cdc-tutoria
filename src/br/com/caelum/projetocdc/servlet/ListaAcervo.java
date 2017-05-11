@@ -13,8 +13,8 @@ import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.jpa.JPAUtil;
 
-@WebServlet("/listaLivro")
-public class ListaLivro extends HttpServlet{
+@WebServlet("/listaAcervo")
+public class ListaAcervo extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,8 +27,9 @@ public class ListaLivro extends HttpServlet{
 		
 		jpa.fechaConexao();
 		
-		request.getRequestDispatcher("/listaLivro.jsp").forward(request, response);
+		request.getRequestDispatcher("/listaAcervo.jsp").forward(request, response);
 		
 		
 	}
+
 }
