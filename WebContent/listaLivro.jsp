@@ -4,13 +4,13 @@
 	<body>
 		<h1>Lista de livros</h1>
 		<c:forEach items="${lista}" var="livro">
-		<h4>Título: ${livro.titulo}</h4>
-		<h4>Título: ${livro.subTitulo}</h4>
-		<h4>Autor: ${livro.autor.nome}</h4>
-		<h4>Data da ultima atualização: ${livro.dataUltimaAtualizacaoString}</h4>
-		<h4>Data lancamento: ${livro.dataLancamentoString}</h4>
-		<h4>Preço: ${livro.preco}</h4>
-		<h4>Tipo: ${livro.tipo}</h4>
+		<h4>Título: <c:out value="${livro.titulo}"/></h4>
+		<h4>Título: <c:out value="${livro.subTitulo}"/></h4>
+		<h4>Autor: <c:out value="${livro.autor.nome}"/></h4>
+		<h4>Data da ultima atualização: <c:out value="${livro.dataUltimaAtualizacaoString}"/></h4>
+		<h4>Data lancamento: <c:out value="${livro.dataLancamentoString}"/></h4>
+		<h4>Preço: <c:out value="${livro.preco}"/></h4>
+		<h4>Tipo: <c:out value="${livro.tipo}"/></h4>
 		<h4>---------------------</h4>
 		</c:forEach>
 	</body>

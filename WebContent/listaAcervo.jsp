@@ -6,7 +6,7 @@
 		<table border="1px">
 		<c:forEach items="${lista}" var="livro">
 			<tr>
-				<td>Título: ${livro.titulo}</td>
+				<td>Título: <c:out value="${livro.titulo}"/></td>
 				<td><a href="http://localhost:8080/cdc-tutoria/mostraLivro?id=${livro.id}">Ver detalhes</a></td>
 			</tr>
 		</c:forEach>
