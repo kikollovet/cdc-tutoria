@@ -41,10 +41,18 @@ public class ValidadorLivro {
 	}
 
 	private boolean isPrecoIgualZero(String precoTexto) {
-		double preco = Double.parseDouble(precoTexto);
+		double preco = 0;
+		try{
+			preco = Double.parseDouble(precoTexto);
+			
+		} catch(NumberFormatException e){
+			return true;
+		}
 		if(preco == 0)
 			return true;
 		return false;
+		
+		
 	}
 
 	private boolean isDataLancamentoInvalida(String dataLancamentoTexto) {
