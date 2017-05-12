@@ -29,6 +29,6 @@ public class MostraLivro extends HttpServlet {
 		
 		jpa.fechaConexao();
 		
-		request.getRequestDispatcher("/livro.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/paginas/livro.jsp").forward(request, response);
 	}
 }

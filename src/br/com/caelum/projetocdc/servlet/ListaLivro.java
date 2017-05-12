@@ -27,7 +27,7 @@ public class ListaLivro extends HttpServlet{
 		
 		jpa.fechaConexao();
 		
-		request.getRequestDispatcher("/listaLivro.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/paginas/listaLivro.jsp").forward(request, response);
 		
 		
 	}

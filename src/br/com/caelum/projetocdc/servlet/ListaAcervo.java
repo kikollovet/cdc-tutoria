@@ -27,7 +27,7 @@ public class ListaAcervo extends HttpServlet {
 		
 		jpa.fechaConexao();
 		
-		request.getRequestDispatcher("/listaAcervo.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/paginas/listaAcervo.jsp").forward(request, response);
 		
 		
 	}
