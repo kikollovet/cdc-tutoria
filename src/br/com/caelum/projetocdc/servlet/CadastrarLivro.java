@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import br.com.caelum.projetocdc.Autor;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.ValidadorLivro;
+import br.com.caelum.projetocdc.ValidadorLivroDois;
 import br.com.caelum.projetocdc.dao.AutorBDDao;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.jpa.JPAUtil;
@@ -34,11 +36,11 @@ public class CadastrarLivro extends HttpServlet {
 		String precoTexto = req.getParameter("preco");
 		String tipoTexto = req.getParameter("tipo");
 		
-		ValidadorLivro validador = new ValidadorLivro();
-		if(validador.validaDadosLivro(titulo, subTitulo, precoTexto, dataUltimaAtualizacaoTexto, dataLancamentoTexto, req)){
-			req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			return;
-		}
+		//ValidadorLivro validador = new ValidadorLivro();
+		//if(validador.validaDadosLivro(titulo, subTitulo, precoTexto, dataUltimaAtualizacaoTexto, dataLancamentoTexto, req)){
+			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
+			//return;
+		//}
 		
 		//if(titulo.isEmpty()){
 			//req.setAttribute("erroTitulo", "Campo obrigatório");
@@ -105,6 +107,22 @@ public class CadastrarLivro extends HttpServlet {
 		Autor autor = dao.getAutor(idAutor);
 		
 		Livro livro = new Livro(titulo, subTitulo, autor, tipo, preco, dataUltimaAtualizacao, dataLancamento);
+		
+		ValidadorLivroDois validador = new ValidadorLivroDois();
+		
+		//if(validador.livroNaoEhValido(livro, req)){
+			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
+			//return;
+		//}
+		
+		if(validador.livroNaoEhValido(livro)){
+			for(Entry<String ,String> mapaErros: validador.getErros().entrySet()){
+				req.setAttribute(mapaErros.getKey(), mapaErros.getValue());
+			}
+				
+			req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
+			return;
+		}
 		
 		LivroBDDao daoLivro = new LivroBDDao(jpa.getEntityManager());
 		
