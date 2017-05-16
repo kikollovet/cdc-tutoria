@@ -66,7 +66,7 @@ public class ValidadorLivroDois {
 	}
 
 	private boolean isPrecoIgualAZero(double preco) {
-		if(preco == 0)
+		if(preco <= 0)
 			return true;
 		return false;
 	}
