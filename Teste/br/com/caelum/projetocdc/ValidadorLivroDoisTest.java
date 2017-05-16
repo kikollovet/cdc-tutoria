@@ -21,61 +21,73 @@ public class ValidadorLivroDoisTest {
 	@Test
 	public void LivroComTodosOsDado(){
 		Livro livro = new Livro("Teste", "Teste", autor, Tipo.IMPRESSO, 49, Calendar.getInstance(), Calendar.getInstance());
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(0, validador.getErros().size());
+		assertFalse(livroNaoEhValido);
 	}
 	
 	@Test
 	public void LivroSemTitulo(){
 		Livro livro = new Livro("", "Teste", autor, Tipo.IMPRESSO, 49, Calendar.getInstance(), Calendar.getInstance());
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(1, validador.getErros().size());
 		assertTrue(validador.getErros().containsKey("erroTitulo"));
+		assertTrue(livroNaoEhValido);
 	}
 	
 	@Test
 	public void LivroSemSubTitulo(){
 		Livro livro = new Livro("Teste", "", autor, Tipo.IMPRESSO, 49, Calendar.getInstance(), Calendar.getInstance());
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(1, validador.getErros().size());
 		assertTrue(validador.getErros().containsKey("erroSubTitulo"));
+		assertTrue(livroNaoEhValido);
 	}
 	
 	@Test
 	public void LivroPrecoZero(){
 		Livro livro = new Livro("Teste", "Teste", autor, Tipo.IMPRESSO, 0, Calendar.getInstance(), Calendar.getInstance());
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(1, validador.getErros().size());
 		assertTrue(validador.getErros().containsKey("erroPreco"));
+		assertTrue(livroNaoEhValido);
 	}
 	
 	@Test
 	public void LivroSemDataUltimaAtualizacao(){
 		Livro livro = new Livro("Teste", "Teste", autor, Tipo.IMPRESSO, 49, null, Calendar.getInstance());
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(1, validador.getErros().size());
 		assertTrue(validador.getErros().containsKey("erroDataUltimaAtualizacao"));
+		assertTrue(livroNaoEhValido);
 	}
 	
 	@Test
 	public void LivroSemDataLancamento(){
 		Livro livro = new Livro("Teste", "Teste", autor, Tipo.IMPRESSO, 49, Calendar.getInstance(), null);
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(1, validador.getErros().size());
 		assertTrue(validador.getErros().containsKey("erroDataLancamento"));
+		assertTrue(livroNaoEhValido);
 	}
 	
 	@Test
 	public void LivroContemCincoErros(){
 		Livro livro = new Livro("", "", autor, Tipo.IMPRESSO, 0, null, null);
-		validador.livroNaoEhValido(livro);
+		boolean livroNaoEhValido = validador.livroNaoEhValido(livro);
 		
 		assertEquals(5, validador.getErros().size());
+		assertTrue(validador.getErros().containsKey("erroTitulo"));
+		assertTrue(validador.getErros().containsKey("erroSubTitulo"));
+		assertTrue(validador.getErros().containsKey("erroPreco"));
+		assertTrue(validador.getErros().containsKey("erroDataUltimaAtualizacao"));
+		assertTrue(validador.getErros().containsKey("erroDataLancamento"));
+		assertTrue(livroNaoEhValido);
 	}
 }

@@ -12,16 +12,16 @@
 		<h1>Cadastro Livro</h1>
 		<h1>--------------</h1>
 		<form action="cadastrarLivro" method="post">
-		Titulo: <input type="text" name="titulo"/>${erroTitulo}<br>
-		SubTitulo: <input type="text" name="subTitulo"/>${erroSubTitulo}<br>
+		Titulo: <input type="text" name="titulo"/>${erros["erroTitulo"]}<br>
+		SubTitulo: <input type="text" name="subTitulo"/>${erros["erroSubTitulo"]}<br>
 		Autor: <select name="autor">
 					<c:forEach items="${lista}" var="autor">
 						<option value="${autor.id}">${autor.id}-${autor.nome}</option>
 					</c:forEach>
 				</select><br>
-		Data Ultima Atualização: <input type="text" name="dataUltimaAtualizacao"/>${erroDataUltimaAtualizacao} <br>
-		Data Lançamento: <input type="text" name="dataLancamento"/>${erroDataLancamento} <br>
-		Preço: <input type="text" name="preco" />${erroPreco}<br>
+		Data Ultima Atualização: <input type="text" name="dataUltimaAtualizacao"/>${erros["erroDataUltimaAtualizacao"]} <br>
+		Data Lançamento: <input type="text" name="dataLancamento"/>${erros["erroDataLancamento"]} <br>
+		Preço: <input type="text" name="preco" />${erros["erroPreco"]}<br>
 		Tipo: <select name="tipo">
 					<option value="EBOOK">EBOOK</option>
 					<option value="IMPRESSO">IMPRESSO</option>

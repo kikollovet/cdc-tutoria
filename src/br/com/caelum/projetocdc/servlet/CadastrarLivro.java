@@ -36,25 +36,6 @@ public class CadastrarLivro extends HttpServlet {
 		String precoTexto = req.getParameter("preco");
 		String tipoTexto = req.getParameter("tipo");
 		
-		//ValidadorLivro validador = new ValidadorLivro();
-		//if(validador.validaDadosLivro(titulo, subTitulo, precoTexto, dataUltimaAtualizacaoTexto, dataLancamentoTexto, req)){
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
-		//}
-		
-		//if(titulo.isEmpty()){
-			//req.setAttribute("erroTitulo", "Campo obrigatório");
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
-		//}
-		
-		//if(subTitulo.isEmpty()){
-			//req.setAttribute("erroSubTitulo", "Campo obrigatório");
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
-		//}
-		
-		
 		Calendar dataUltimaAtualizacao = null;
 		
 		try {
@@ -63,9 +44,7 @@ public class CadastrarLivro extends HttpServlet {
 			dataUltimaAtualizacao = Calendar.getInstance();
 			dataUltimaAtualizacao.setTime(date);
 		} catch (ParseException e) {
-			//req.setAttribute("erroDataUltimaAtualizacao", "Data em formato dd/MM/aaaa");
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
+			
 		}
 		
 		Calendar dataLancamento = null;
@@ -76,9 +55,7 @@ public class CadastrarLivro extends HttpServlet {
 			dataLancamento = Calendar.getInstance();
 			dataLancamento.setTime(date);
 		} catch (ParseException e) {
-			//req.setAttribute("erroDataLancamento", "Data em formato dd/MM/aaaa");
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
+
 		}
 		
 		double preco = 0;
@@ -86,16 +63,8 @@ public class CadastrarLivro extends HttpServlet {
 		try {
 			preco = Double.parseDouble(precoTexto);
 		} catch (NumberFormatException e) {
-			//req.setAttribute("erroPreco", "Campo deve ser preenchido com número");
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
+
 		}
-		
-		//if(preco == 0){
-			//req.setAttribute("erroPreco", "O preço deve ser diferente de zero");
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
-		//}
 		
 		Tipo tipo = Tipo.valueOf(tipoTexto);
 		
@@ -110,16 +79,8 @@ public class CadastrarLivro extends HttpServlet {
 		
 		ValidadorLivroDois validador = new ValidadorLivroDois();
 		
-		//if(validador.livroNaoEhValido(livro, req)){
-			//req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
-			//return;
-		//}
-		
 		if(validador.livroNaoEhValido(livro)){
-			for(Entry<String ,String> mapaErros: validador.getErros().entrySet()){
-				req.setAttribute(mapaErros.getKey(), mapaErros.getValue());
-			}
-				
+			req.setAttribute("erros", validador.getErros());	
 			req.getRequestDispatcher("/formularioCadastroLivro").forward(req, resp);
 			return;
 		}
