@@ -16,5 +16,7 @@
 		<br>
 		<input type="submit" value="Cadastrar"/>		
 		</form>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
 	</body>
 </html>

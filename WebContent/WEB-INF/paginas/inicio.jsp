@@ -3,11 +3,11 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<h1>Bem vindo a casa do CÃ³digo</h1>
+		<h1>Bem vindo a casa do Código</h1>
 		<h1>--------------------------</h1>
-		<a href="http://localhost:8080/cdc-tutoria/listaLivro">Todos os livros com toda a descriÃ§Ã£o</a>
+		<a href="http://localhost:8080/cdc-tutoria/listaLivro">Todos os livros com toda a descrição</a>
 		<br>
-		<a href="http://localhost:8080/cdc-tutoria/listaAcervo">Todo o acervo com a opÃ§Ã£o de ver detalhes do livro</a>
+		<a href="http://localhost:8080/cdc-tutoria/listaAcervo">Todo o acervo com a opção de ver detalhes do livro</a>
 		<br>
 		<a href="http://localhost:8080/cdc-tutoria/formularioCadastroUsuario">Cadastrar usuario</a>
 		<br>

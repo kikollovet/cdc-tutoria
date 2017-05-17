@@ -8,5 +8,8 @@
 </head>
 	<body>
 		${usuario.nome}, vc foi cadastrado com sucesso!
+		
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
 	</body>
 </html>

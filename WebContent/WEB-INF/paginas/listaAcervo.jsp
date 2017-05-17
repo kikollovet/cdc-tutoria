@@ -11,5 +11,7 @@
 			</tr>
 		</c:forEach>
 		</table>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
 	</body>
 </html>

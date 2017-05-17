@@ -8,5 +8,7 @@
 </head>
 <body>
 	<h1>Autor cadastrado com sucesso</h1>
+	<br>
+		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
 </body>
 </html>

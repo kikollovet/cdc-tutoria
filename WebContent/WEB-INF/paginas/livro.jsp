@@ -10,5 +10,7 @@
 		<h4>Data lancamento: <c:out value="${livro.dataLancamentoString}"/></h4>
 		<h4>Preço: <c:out value="${livro.preco}"/></h4>
 		<h4>Tipo: <c:out value="${livro.tipo}"/></h4>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
 	</body>
 </html>

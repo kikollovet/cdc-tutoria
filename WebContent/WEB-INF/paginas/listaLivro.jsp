@@ -13,5 +13,8 @@
 		<h4>Tipo: <c:out value="${livro.tipo}"/></h4>
 		<h4>---------------------</h4>
 		</c:forEach>
+		
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
 	</body>
 </html>
