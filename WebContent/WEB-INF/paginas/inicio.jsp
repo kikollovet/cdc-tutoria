@@ -16,5 +16,7 @@
 		<a href="http://localhost:8080/cdc-tutoria/formularioCadastroAutor">Cadastrar Autor</a>
 		<br>
 		<a href="http://localhost:8080/cdc-tutoria/visualizarCarrinho">Visualizar Carrinho</a>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/visualizarCompras">Visualizar todas as compras</a>
 	</body>
 </html>

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -41,6 +42,10 @@ public class CompraBDDao {
 	public Compra getCompra(int id) {
 		Compra compra = manager.find(Compra.class, id);	
 		return compra;
+	}
+	
+	public List<Compra> getLista(){
+		return manager.createQuery("select c from Compra c").getResultList();
 	}
 	
 }
