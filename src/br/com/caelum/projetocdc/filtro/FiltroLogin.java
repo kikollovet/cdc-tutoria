@@ -33,8 +33,10 @@ public class FiltroLogin implements Filter {
 		if(usuario == null)
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		
-		if(usuario != null)
-			request.getRequestDispatcher("/WEB-INF/paginas/inicio.jsp").forward(request, response);
+		if(usuario != null){
+			//request.getRequestDispatcher("/WEB-INF/paginas/inicio.jsp").forward(request, response);
+			chain.doFilter(request, response);
+		}
 	}
 
 	@Override

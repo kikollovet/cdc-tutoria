@@ -13,5 +13,7 @@
 		</table>
 		<br>
 		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/visualizarCarrinho">Visualizar Carrinho</a>
 	</body>
 </html>

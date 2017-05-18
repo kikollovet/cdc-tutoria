@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Usuario;
 import br.com.caelum.projetocdc.autentificador.Autentificador;
 import br.com.caelum.projetocdc.jpa.JPAUtil;
@@ -30,6 +31,10 @@ public class Autentificar extends HttpServlet {
 		
 		if(usuario != null){
 			req.getSession().setAttribute("usuario", usuario);
+			
+			CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+			req.getSession().setAttribute("carrinho", carrinho);
+			
 			resp.sendRedirect("/cdc-tutoria/inicio");	
 		} else {
 			req.setAttribute("erroLogin", "Não foi possível autentificar o usuario");
