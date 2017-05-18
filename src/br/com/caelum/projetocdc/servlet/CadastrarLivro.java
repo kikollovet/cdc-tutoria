@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.caelum.projetocdc.Autor;
+import br.com.caelum.projetocdc.ConversorData;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.ValidadorLivro;
@@ -36,28 +37,10 @@ public class CadastrarLivro extends HttpServlet {
 		String precoTexto = req.getParameter("preco");
 		String tipoTexto = req.getParameter("tipo");
 		
-		Calendar dataUltimaAtualizacao = null;
+		Calendar dataUltimaAtualizacao = ConversorData.converteDataStringPraCalendar(dataUltimaAtualizacaoTexto);
 		
-		try {
-			Date date = new SimpleDateFormat("dd/MM/yyyy")
-			.parse(dataUltimaAtualizacaoTexto);
-			dataUltimaAtualizacao = Calendar.getInstance();
-			dataUltimaAtualizacao.setTime(date);
-		} catch (ParseException e) {
-			
-		}
-		
-		Calendar dataLancamento = null;
-		
-		try {
-			Date date = new SimpleDateFormat("dd/MM/yyyy")
-			.parse(dataLancamentoTexto);
-			dataLancamento = Calendar.getInstance();
-			dataLancamento.setTime(date);
-		} catch (ParseException e) {
-
-		}
-		
+		Calendar dataLancamento = ConversorData.converteDataStringPraCalendar(dataLancamentoTexto);
+				
 		double preco = 0;
 		
 		try {

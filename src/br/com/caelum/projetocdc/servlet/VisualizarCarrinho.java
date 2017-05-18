@@ -19,11 +19,7 @@ public class VisualizarCarrinho extends HttpServlet {
 		
 		CarrinhoDeCompras carrinho = (CarrinhoDeCompras) req.getSession().getAttribute("carrinho");
 		
-		double total = 0;
-		
-		for(Item item: carrinho.getItens()){
-			total += item.getPrecoTotal();
-		}
+		double total = carrinho.getValorTotal();
 		
 		req.setAttribute("total", total);
 		

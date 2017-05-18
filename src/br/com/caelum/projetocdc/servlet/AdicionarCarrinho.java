@@ -32,8 +32,6 @@ public class AdicionarCarrinho extends HttpServlet {
 		CarrinhoDeCompras carrinho = (CarrinhoDeCompras) req.getSession().getAttribute("carrinho");
 		carrinho.adiciona(item);
 		
-		req.getSession().setAttribute("carrinho", carrinho);
-		
 		resp.sendRedirect("/cdc-tutoria/itemAdicionadoNoCarrinho");
 	}
 }

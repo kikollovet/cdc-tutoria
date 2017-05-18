@@ -29,15 +29,13 @@ public class CadastrarAutor extends HttpServlet {
 		
 		Autor autor = new Autor(nome);
 		
-		JPAUtil jpa = new JPAUtil();
+		JPAUtil jpa = (JPAUtil) req.getAttribute("jpa");
 		
 		AutorBDDao dao = new AutorBDDao(jpa.getEntityManager());
 		
 		jpa.iniciaTransacao();
 		dao.adiciona(autor);
 		jpa.comitaTransacao();
-		
-		jpa.fechaConexao();
 		
 		req.setAttribute("autor", autor);
 		
