@@ -65,4 +65,8 @@ public class CarrinhoDeCompras {
 		}
 		return quantidade;
 	}
+	
+	public void esvaziar(){
+		this.itens.clear();
+	}
 }

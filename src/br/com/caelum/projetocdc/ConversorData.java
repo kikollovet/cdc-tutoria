@@ -15,7 +15,7 @@ public class ConversorData {
 			data = Calendar.getInstance();
 			data.setTime(date);
 		} catch (ParseException e) {
-			throw new RuntimeException(e);
+			return null;
 		}
 		
 		return data;

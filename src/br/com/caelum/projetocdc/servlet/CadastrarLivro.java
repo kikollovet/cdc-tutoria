@@ -18,7 +18,7 @@ import br.com.caelum.projetocdc.ConversorData;
 import br.com.caelum.projetocdc.Livro;
 import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.ValidadorLivro;
-import br.com.caelum.projetocdc.ValidadorLivroDois;
+import br.com.caelum.projetocdc.ValidadorLivro;
 import br.com.caelum.projetocdc.dao.AutorBDDao;
 import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.jpa.JPAUtil;
@@ -60,7 +60,7 @@ public class CadastrarLivro extends HttpServlet {
 		
 		Livro livro = new Livro(titulo, subTitulo, autor, tipo, preco, dataUltimaAtualizacao, dataLancamento);
 		
-		ValidadorLivroDois validador = new ValidadorLivroDois();
+		ValidadorLivro validador = new ValidadorLivro();
 		
 		if(validador.livroNaoEhValido(livro)){
 			req.setAttribute("erros", validador.getErros());	

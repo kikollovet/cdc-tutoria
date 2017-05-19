@@ -30,6 +30,7 @@
 		<br>
 		<br>
 		<a href="http://localhost:8080/cdc-tutoria/inicio">Voltar a tela inicial</a><br>
-		<a href="http://localhost:8080/cdc-tutoria/listaAcervo">Todo o acervo com a opção de ver detalhes do livro</a>
+		<a href="http://localhost:8080/cdc-tutoria/listaAcervo">Todo o acervo com a opção de ver detalhes do livro</a><br>
+		<a href="http://localhost:8080/cdc-tutoria/paginaConfirmacaoCompra">Finalizar pedido</a>
 	</body>
 </html>

@@ -1,95 +1,74 @@
 package br.com.caelum.projetocdc;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.com.caelum.projetocdc.Livro;
+
 public class ValidadorLivro {
 
-	public boolean validaDadosLivro(String titulo, String subTitulo, String precoTexto
-			, String dataUltimaAtualizacaoTexto, String dataLancamentoTexto, HttpServletRequest request){
+	Map<String, String> erros = new HashMap<>();
+	
+	public Map<String, String> getErros() {
+		return erros;
+	}
+	
+	public boolean livroNaoEhValido(Livro livro){
 		boolean naoEhValido = false;
+		 
+		if(isTituloVazio(livro.getTitulo())){
+			//request.setAttribute("erroTitulo", "Campo obrigatório");
+			erros.put("erroTitulo", "Campo obrigatório");
+			naoEhValido = true;
+		}
 		
-		if(isTituloVazio(titulo)){
-			request.setAttribute("erroTitulo", "Campo obrigatório");
+		if(isSubTituloVazio(livro.getSubTitulo())){
+			//request.setAttribute("erroSubTitulo", "Campo obrigatório");
+			erros.put("erroSubTitulo", "Campo obrigatório");
+ 			naoEhValido = true;
+		}
+		
+		if(isPrecoIgualAZero(livro.getPreco())){
+			//request.setAttribute("erroPreco", "Preço deve ser diferente de zero");
+			erros.put("erroPreco", "Preço deve ser diferente de zero");
 			naoEhValido = true;
 		}
-		if(isSubTituloVazio(subTitulo)){
-			request.setAttribute("erroSubTitulo", "Campo obrigatório");
+		
+		if(isDataUltimaAtualizacaoNull(livro.getDataUltimaAtualizacao())){
+			//request.setAttribute("erroDataUltimaAtualizacao", "Data em formato dd/MM/aaaa");
+			erros.put("erroDataUltimaAtualizacao", "Data em formato dd/MM/aaaa");
 			naoEhValido = true;
 		}
-		if(isPrecoCaracter(precoTexto)){
-			request.setAttribute("erroPreco", "Campo deve ser preenchido com número");
+		
+		if(isDataLancamentoNull(livro.getDataLancamento())){
+			//request.setAttribute("erroDataLancamento", "Data em formato dd/MM/aaaa");
+			erros.put("erroDataLancamento", "Data em formato dd/MM/aaaa");
 			naoEhValido = true;
 		}
-		if(isPrecoIgualZero(precoTexto)){
-			request.setAttribute("erroPreco", "Preço deve ser diferente de zero");
-			naoEhValido = true;
-		}
-		if(isDataUltimaAtualizacaoInvalida(dataUltimaAtualizacaoTexto)){
-			request.setAttribute("erroDataUltimaAtualizacao", "Data em formato dd/MM/aaaa");
-			naoEhValido = true;
-		}
-		if(isDataLancamentoInvalida(dataLancamentoTexto)){
-			request.setAttribute("erroDataLancamento", "Data em formato dd/MM/aaaa");
-			naoEhValido = true;
-		}
+		
 		return naoEhValido;
 	}
 
-	private boolean isPrecoIgualZero(String precoTexto) {
-		double preco = 0;
-		try{
-			preco = Double.parseDouble(precoTexto);
-			
-		} catch(NumberFormatException e){
-			return true;
-		}
-		if(preco == 0)
+	private boolean isDataLancamentoNull(Calendar dataLancamento) {
+		if(dataLancamento == null)
 			return true;
 		return false;
-		
-		
 	}
 
-	private boolean isDataLancamentoInvalida(String dataLancamentoTexto) {
-		Calendar dataLancamento = null;
-		
-		try {
-			Date date = new SimpleDateFormat("dd/MM/yyyy")
-			.parse(dataLancamentoTexto);
-			dataLancamento = Calendar.getInstance();
-			dataLancamento.setTime(date);
-			return false;
-		} catch (ParseException e) {
+	private boolean isDataUltimaAtualizacaoNull(Calendar dataUltimaAtualizacao) {
+		if(dataUltimaAtualizacao == null)
 			return true;
-		}
+		return false;
 	}
 
-	private boolean isDataUltimaAtualizacaoInvalida(String dataUltimaAtualizacaoTexto) {
-		Calendar dataUltimaAtualizacao = null;
-		
-		try {
-			Date date = new SimpleDateFormat("dd/MM/yyyy")
-			.parse(dataUltimaAtualizacaoTexto);
-			dataUltimaAtualizacao = Calendar.getInstance();
-			dataUltimaAtualizacao.setTime(date);
-			return false;
-		} catch (ParseException e) {
+	private boolean isPrecoIgualAZero(double preco) {
+		if(preco <= 0)
 			return true;
-		}
-	}
-
-	private boolean isPrecoCaracter(String precoTexto) {
-		try {
-			Double.parseDouble(precoTexto);
-			return false;
-		} catch (NumberFormatException e) {
-			return true;
-		}
+		return false;
 	}
 
 	private boolean isSubTituloVazio(String subTitulo) {

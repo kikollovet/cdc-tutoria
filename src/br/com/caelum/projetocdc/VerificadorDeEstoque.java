@@ -15,8 +15,8 @@ public class VerificadorDeEstoque {
 		if (isImpresso(item) && temRegistroNoEstoque(item)) {
 			ItemNoEstoque itemNoEstoque = estoqueBDdao.getItemNoEstoqueIdLivro(item.getLivro().getId());
 			if (isQuantidadeNaoDisponivel(item, itemNoEstoque)) {
-				throw new QuantidadeInsuficienteNoEstoqueException("Não temos essa quantidade de livros"
-						+ " disponível no estoque. Temos " + itemNoEstoque.getQuantidadeNoEstoque());
+				throw new QuantidadeInsuficienteNoEstoqueException("Nï¿½o temos essa quantidade de livros"
+						+ " disponï¿½vel no estoque. Temos " + itemNoEstoque.getQuantidadeNoEstoque());
 			}
 		}
 		return true;
@@ -27,7 +27,12 @@ public class VerificadorDeEstoque {
 	}
 
 	private boolean temRegistroNoEstoque(Item item) {
-		return item.getLivro().equals(estoqueBDdao.getItemNoEstoqueIdLivro(item.getLivro().getId()).getLivro());
+		try{
+			estoqueBDdao.getItemNoEstoqueIdLivro(item.getLivro().getId()).getLivro();
+		}catch (NullPointerException e){
+			return false;
+		}
+		return estoqueBDdao.getItemNoEstoqueIdLivro(item.getLivro().getId()).getLivro().equals(item.getLivro());
 	}
 
 	private boolean isImpresso(Item item) {

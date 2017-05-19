@@ -10,12 +10,12 @@ import org.junit.Test;
 public class ValidadorLivroDoisTest {
 
 	Autor autor;
-	ValidadorLivroDois validador;
+	ValidadorLivro validador;
 	
 	@Before
 	public void setUp(){
 		this.autor = new Autor("Jonas");
-		this.validador = new ValidadorLivroDois();
+		this.validador = new ValidadorLivro();
 	}
 	
 	@Test

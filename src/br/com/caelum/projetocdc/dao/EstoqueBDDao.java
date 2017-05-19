@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.com.caelum.projetocdc.Autor;
@@ -45,8 +46,12 @@ public class EstoqueBDDao {
 	public ItemNoEstoque getItemNoEstoqueIdLivro(int id) throws NaoPodeAdicionarEbookNoEstoqueException{
 		Query query = manager.createQuery("select e from ItemNoEstoque e where e.livro.id = :id");
 		query.setParameter("id", id);
-		List<ItemNoEstoque> lista = query.getResultList();
-		return lista.get(0);
+		try{
+			ItemNoEstoque item = (ItemNoEstoque) query.getSingleResult();
+			return item;
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 	
 }
