@@ -18,5 +18,9 @@
 		<a href="http://localhost:8080/cdc-tutoria/visualizarCarrinho">Visualizar Carrinho</a>
 		<br>
 		<a href="http://localhost:8080/cdc-tutoria/visualizarCompras">Visualizar todas as compras</a>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/visualizarEstoque">Visualizar estoque</a>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/alterarEstoque">Alterar Estoque</a>
 	</body>
 </html>

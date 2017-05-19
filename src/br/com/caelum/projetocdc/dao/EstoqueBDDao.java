@@ -54,4 +54,7 @@ public class EstoqueBDDao {
 		}
 	}
 	
+	public List<ItemNoEstoque> getLista(){
+		return manager.createQuery("select e from ItemNoEstoque e").getResultList();
+	}
 }
