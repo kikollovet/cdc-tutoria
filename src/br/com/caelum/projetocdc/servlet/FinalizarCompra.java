@@ -12,10 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Compra;
 import br.com.caelum.projetocdc.GeradoraDeCompra;
+import br.com.caelum.projetocdc.Item;
+import br.com.caelum.projetocdc.ItemNoEstoque;
+import br.com.caelum.projetocdc.Livro;
+import br.com.caelum.projetocdc.Tipo;
 import br.com.caelum.projetocdc.Usuario;
 import br.com.caelum.projetocdc.VerificadorDeEstoque;
 import br.com.caelum.projetocdc.dao.CompraBDDao;
 import br.com.caelum.projetocdc.dao.EstoqueBDDao;
+import br.com.caelum.projetocdc.dao.LivroBDDao;
 import br.com.caelum.projetocdc.jpa.JPAUtil;
 
 @WebServlet("/finalizarCompra")
@@ -39,7 +44,19 @@ public class FinalizarCompra extends HttpServlet {
 		
 		CompraBDDao compraDao = new CompraBDDao(jpa.getEntityManager());
 		
+		LivroBDDao livroDao = new LivroBDDao(jpa.getEntityManager());
+		
+		EstoqueBDDao estoqueDao = new EstoqueBDDao(jpa.getEntityManager());
+		
 		jpa.iniciaTransacao();
+		
+		for(Item item: compra.getItens()){
+			if(item.getLivro().getTipo().equals(Tipo.IMPRESSO)){
+				ItemNoEstoque itemNoEstoque = estoqueDao.getItemNoEstoqueIdLivro(item.getLivro().getId());
+				estoqueDao.diminuiQuantidade(itemNoEstoque, item.getQuantidade());
+			}
+		}
+		
 		compraDao.adiciona(compra);
 		jpa.comitaTransacao();
 		
