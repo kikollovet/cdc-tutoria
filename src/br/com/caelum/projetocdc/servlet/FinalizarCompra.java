@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.caelum.projetocdc.AtualizadorDeEstoque;
 import br.com.caelum.projetocdc.CarrinhoDeCompras;
 import br.com.caelum.projetocdc.Compra;
 import br.com.caelum.projetocdc.GeradoraDeCompra;
@@ -44,19 +45,12 @@ public class FinalizarCompra extends HttpServlet {
 		
 		CompraBDDao compraDao = new CompraBDDao(jpa.getEntityManager());
 		
-		LivroBDDao livroDao = new LivroBDDao(jpa.getEntityManager());
-		
 		EstoqueBDDao estoqueDao = new EstoqueBDDao(jpa.getEntityManager());
 		
+		AtualizadorDeEstoque atualizador = new AtualizadorDeEstoque(estoqueDao);
+		
 		jpa.iniciaTransacao();
-		
-		for(Item item: compra.getItens()){
-			if(item.getLivro().getTipo().equals(Tipo.IMPRESSO)){
-				ItemNoEstoque itemNoEstoque = estoqueDao.getItemNoEstoqueIdLivro(item.getLivro().getId());
-				estoqueDao.diminuiQuantidade(itemNoEstoque, item.getQuantidade());
-			}
-		}
-		
+		atualizador.atualizaEstoque(compra);
 		compraDao.adiciona(compra);
 		jpa.comitaTransacao();
 		

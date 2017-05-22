@@ -2,6 +2,7 @@ package br.com.caelum.projetocdc.servlet;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,13 +30,15 @@ public class CadastrarAutor extends HttpServlet {
 		
 		Autor autor = new Autor(nome);
 		
-		JPAUtil jpa = (JPAUtil) req.getAttribute("jpa");
+		EntityManager manager = (EntityManager) req.getAttribute("Manager");
 		
-		AutorBDDao dao = new AutorBDDao(jpa.getEntityManager());
+		AutorBDDao dao = new AutorBDDao(manager);
 		
-		jpa.iniciaTransacao();
+		//jpa.iniciaTransacao();
+		manager.getTransaction().begin();
 		dao.adiciona(autor);
-		jpa.comitaTransacao();
+		manager.getTransaction().commit();
+		//jpa.comitaTransacao();
 		
 		req.setAttribute("autor", autor);
 		

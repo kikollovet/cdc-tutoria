@@ -17,7 +17,7 @@ public class FiltroJPA implements Filter {
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
+		JPAUtil.fechaFabrica();
 
 	}
 
@@ -27,11 +27,10 @@ public class FiltroJPA implements Filter {
 
 		JPAUtil jpa = new JPAUtil();
 		
-		request.setAttribute("jpa", jpa);
+		request.setAttribute("Manager", jpa.getEntityManager());
 		
 		chain.doFilter(request, response);
 		
-		jpa.fechaConexao();
 	}
 
 	@Override

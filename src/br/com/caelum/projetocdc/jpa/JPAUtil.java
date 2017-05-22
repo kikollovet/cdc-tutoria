@@ -6,11 +6,11 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 
-	private EntityManagerFactory factory;
+	private static EntityManagerFactory factory;
 	private EntityManager manager;
 	
 	public JPAUtil(){
-		this.factory = Persistence.createEntityManagerFactory("cdc");
+		factory = Persistence.createEntityManagerFactory("cdc");
 		this.manager = factory.createEntityManager();
 	}
 	
@@ -29,5 +29,9 @@ public class JPAUtil {
 	public void fechaConexao(){
 		this.manager.close();
 		this.factory.close();
+	}
+	
+	public static void fechaFabrica(){
+		factory.close();
 	}
 }
