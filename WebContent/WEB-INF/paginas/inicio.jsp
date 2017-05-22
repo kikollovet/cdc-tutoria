@@ -22,5 +22,7 @@
 		<a href="http://localhost:8080/cdc-tutoria/visualizarEstoque">Visualizar estoque</a>
 		<br>
 		<a href="http://localhost:8080/cdc-tutoria/alterarEstoque">Alterar Estoque</a>
+		<br>
+		<a href="http://localhost:8080/cdc-tutoria/cadastroItemNoEstoque">Cadastrar item no estoque</a>
 	</body>
 </html>
